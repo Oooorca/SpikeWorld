@@ -1,0 +1,25 @@
+[paths]
+model_checkpoints = [
+  "artifacts/spikeworld_seed42401.pt",
+  "artifacts/spikeworld_seed42402.pt",
+  "artifacts/spikeworld_seed42403.pt",
+  "artifacts/spikeworld_seed42404.pt",
+  "artifacts/spikeworld_seed42405.pt",
+]
+deployment_bundles = [
+  "artifacts/deployment_seed42401.pt",
+  "artifacts/deployment_seed42402.pt",
+  "artifacts/deployment_seed42403.pt",
+  "artifacts/deployment_seed42404.pt",
+  "artifacts/deployment_seed42405.pt",
+]
+online_manifest = "artifacts/shifts/online_manifest.json"
+audit_manifest = "artifacts/shifts/audit_manifest.json"
+output = "outputs/adaptation.json"
+
+[run]
+device = "cpu"
+router_observations = 4
+residual_learning_rate = 0.02
+residual_radius = 0.20
+action_cap = 0.05

@@ -1,0 +1,10 @@
+[paths]
+model_checkpoint = "artifacts/spikeworld_seed42401.pt"
+online_manifest = "artifacts/shifts/online_manifest.json"
+paper_results = "results/paper_results.json"
+output = "outputs/audit.json"
+
+[run]
+device = "cpu"
+sequence_length = 16
+attention_topk = 4

@@ -1,0 +1,29 @@
+[paths]
+model_checkpoints = [
+  "artifacts/spikeworld_seed42401.pt",
+  "artifacts/spikeworld_seed42402.pt",
+  "artifacts/spikeworld_seed42403.pt",
+  "artifacts/spikeworld_seed42404.pt",
+  "artifacts/spikeworld_seed42405.pt",
+]
+deployment_bundles = [
+  "artifacts/deployment_seed42401.pt",
+  "artifacts/deployment_seed42402.pt",
+  "artifacts/deployment_seed42403.pt",
+  "artifacts/deployment_seed42404.pt",
+  "artifacts/deployment_seed42405.pt",
+]
+output = "outputs/control.json"
+
+[run]
+device = "cpu"
+tasks = ["reach-v3", "push-v3", "pick-place-v3"]
+replicas = 5
+base_seed = 147010000
+hidden_attenuation = 0.40
+macro_horizon = 8
+max_steps = 104
+action_noise_std = 0.05
+action_noise_offset = 5150
+arms = ["frozen", "safe_fast", "full_tuning", "rls", "replay", "oracle"]
+

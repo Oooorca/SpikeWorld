@@ -1,0 +1,40 @@
+{
+  "adaptation": {
+    "attenuation_action_improvement": 0.039416927626359635,
+    "attenuation_prediction_improvement": 0.30005303976853337,
+    "attenuation_route_accuracy": 0.94,
+    "episodes": 80,
+    "shear_action_improvement": 0.2419739605392585,
+    "shear_prediction_improvement": 0.05479861529864915,
+    "shear_route_accuracy": 0.765
+  },
+  "control": {
+    "fast_reward": 422.58465320554353,
+    "fast_reward_delta": 7.904489037654288,
+    "fast_reward_delta_ci95": [2.4785862129038407, 14.060020147410496],
+    "fast_success": 0.6666666666666666,
+    "frozen_reward": 414.68016416788913,
+    "frozen_success": 0.5333333333333333,
+    "full_tuning_reward": 422.18712033991415,
+    "oracle_reward": 485.5012158153691,
+    "replay_reward": 428.5883103672116,
+    "rls_reward": 434.408070546801
+  },
+  "joint": {
+    "action_mse_improvement": 0.1709561687693975,
+    "binding_r1_change": 0.018125001713633536,
+    "next_slice_improvement": 0.007535254543733538,
+    "semantic_accuracy_change": 0.01795238095238095,
+    "seeds": [42401, 42402, 42403, 42404, 42405]
+  },
+  "system": {
+    "allowed_qk_reduction": 0.7734375,
+    "allowed_sparse_qk_pairs": 58,
+    "dense_qk_pairs": 256,
+    "fast_state_bytes": 24384,
+    "model_parameter_bytes_fp32": 5805552,
+    "model_parameters": 1451388,
+    "safe_fast_update_ms": 1.4756569714070513,
+    "software_forward_speedup": 1.1434088269880704
+  }
+}

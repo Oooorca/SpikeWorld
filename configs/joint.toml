@@ -1,0 +1,14 @@
+[paths]
+source_checkpoint = "artifacts/multimodal_source.pt"
+sensory_root = "artifacts/sensory"
+action_fit_root = "artifacts/action_fit"
+action_eval_root = "artifacts/action_eval"
+output = "outputs/joint.json"
+
+[run]
+device = "auto"
+seeds = [42401, 42402, 42403, 42404, 42405]
+control_updates = 800
+joint_updates = 200
+batch_size = 32
+learning_rate = 0.0001

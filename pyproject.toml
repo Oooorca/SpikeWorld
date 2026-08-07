@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spikeworld"
+version = "0.1.0"
+description = "Code for predictive multimodal world modeling and fast-state adaptation over spike streams"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26,<3",
+  "torch>=2.2,<3",
+]
+
+[project.optional-dependencies]
+train = ["scikit-learn>=1.4,<2"]
+control = [
+  "gymnasium>=1.0,<2",
+  "metaworld>=3.0,<4",
+  "mujoco>=3.2,<4",
+]
+dev = ["pytest>=8,<9", "ruff>=0.6,<1"]
+
+[project.scripts]
+spikeworld-joint = "spikeworld.experiments.joint:main"
+spikeworld-adapt = "spikeworld.experiments.adapt:main"
+spikeworld-control = "spikeworld.experiments.control:main"
+spikeworld-audit = "spikeworld.experiments.audit:main"
+spikeworld-verify = "spikeworld.results:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 92
+target-version = "py310"
+

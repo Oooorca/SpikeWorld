@@ -1,0 +1,20 @@
+{
+  "multimodal_source": {
+    "file": "multimodal_source.pt",
+    "sha256": "047979555c70e625106d96ac1193dfdbaf01f32e7f5b2dfa7c2e025ad7bcdc12"
+  },
+  "paper_checkpoint": {
+    "file": "spikeworld_seed42401.pt",
+    "sha256": "6513bc37d9cd3a5a91dedb478ccd54ce87850e6cd06cb1f3fb9437767dece1ff"
+  },
+  "data_manifests": {
+    "sensory_sha256": "4b65aa30a5b833cfa78b0f28066eb8b8caeb2e0305ef734be2a5030ac000a7c8",
+    "shift_audit_sha256": "485a99507747ed655f6f03730062168db7ff8095ab1d7b2290e166ee2c789ea8",
+    "shift_online_sha256": "0a4bf8e423fca1d5d4ef4515a0c8418206ab38fe34f769325e61b98fc075b6fb"
+  },
+  "paper_result_sources": {
+    "adaptation_sha256": "6191a32186688b5fc8e4692f4f39244ed2818d0404c9802fa348e83a10a1c033",
+    "control_sha256": "2d9183a93fc39aebbe853975e9ca410c7bada0b711155bde5e240e85edd12083",
+    "joint_sha256": "c7fa95bd0be6f1817c9b93ee818d7c4678ea9ebf00b1f7e8f88e858926b768d6"
+  }
+}
