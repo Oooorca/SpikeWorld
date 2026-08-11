@@ -1,0 +1,382 @@
+{
+  "claims_evidence": [
+    {
+      "claim": "One spiking checkpoint is jointly optimized for multimodal predictive-semantic state and action dynamics.",
+      "evidence": "M433: action MSE +17.10%, next-slice +0.75%, semantic accuracy +1.80 pp, binding R@1 +1.81 pp across five action seeds.",
+      "status": "qualified"
+    },
+    {
+      "claim": "A frozen 24 KB fast state improves prediction and action tracking under registered shear and attenuation.",
+      "evidence": "M429 fresh: shear prediction/action +5.48%/+24.20%; attenuation +30.01%/+3.94%; all seed and task means positive.",
+      "status": "qualified"
+    },
+    {
+      "claim": "Prediction-driven correction improves real frozen-policy reward and success.",
+      "evidence": "M431 fresh: reward +7.90 [2.48,14.06], success +13.33 pp, positive reward for all tasks and model seeds.",
+      "status": "qualified for constant attenuation"
+    },
+    {
+      "claim": "Fast-state deployment preserves inherited semantics and parameters exactly.",
+      "evidence": "M429 and M431 hashes are bitwise exact for all five model seeds.",
+      "status": "qualified"
+    },
+    {
+      "claim": "The deployed learner is label-, teacher-, reward-, and mechanism-value-free.",
+      "evidence": "M429 online shards contain only state/action/endpoint/seed/step/index fields; M431 update calls pass only state, command, task, endpoint.",
+      "status": "qualified"
+    },
+    {
+      "claim": "SpikeWorld outperforms classical identification on simple linear attenuation.",
+      "evidence": "M431 Jacobian RLS reward gain +19.73 versus SpikeWorld +7.90.",
+      "status": "falsified"
+    },
+    {
+      "claim": "The router discovers arbitrary unknown shifts or safely recognizes source return.",
+      "evidence": "Positive results use registered families; M425/M426 source-return suppression was 9%--51%.",
+      "status": "not established; source-return version falsified"
+    },
+    {
+      "claim": "The system implements biologically realistic online perception.",
+      "evidence": "Frontends and router are engineered, shifts are registered, and no physical asynchronous sensor loop is evaluated.",
+      "status": "future work"
+    },
+    {
+      "claim": "Sparse execution proves neuromorphic energy savings.",
+      "evidence": "M206 measures QK counts and software latency only; no chip energy is measured.",
+      "status": "not established"
+    }
+  ],
+  "decision": "M434_FINAL_SYSTEM_AUDIT_QUALIFIED",
+  "decisions": {
+    "m429": "M429_SAFE_FRESH_TWO_SHIFT_CONFIRMATION_QUALIFIED",
+    "m431": "M431_FRESH_TASK_LEVEL_CONTROL_QUALIFIED",
+    "m433": "M433_MULTI_SEED_JOINT_INTEGRATION_QUALIFIED"
+  },
+  "efficiency": {
+    "fast_state_bytes": 24384,
+    "fast_state_to_model_ratio": 0.0042001174048565924,
+    "full_tuning_mutable_bytes": 1737648.0,
+    "full_tuning_optimizer_state_bytes_estimate": 3475296.0,
+    "full_tuning_update_ms": 3.567907224074961,
+    "model_parameter_bytes_fp32": 5805552,
+    "safe_fast_speedup_over_full_update": 2.417843234036249,
+    "safe_fast_update_ms": 1.4756569714070513,
+    "sparse_attention_proxy": {
+      "allowed_qk_reduction": 0.7734375,
+      "allowed_sparse_qk_pairs": 58,
+      "boundary": "The attention-module timer includes Q/K/V projections, their LIF recurrences, gated attention-score products, and output projection on an actual first-layer input. The score-aggregation timer isolates gated QK, softmax, and value aggregation after Q/K/V have been prepared. QK counts cover attention-score products only. Full forward latency includes retinal convolutions, LIF recurrence, FFNs, decoders, and output heads; RSS is process-level peak memory.",
+      "dense_full_forward_median_ms": 24.124521000000065,
+      "dense_qk_pairs": 256,
+      "hardware_energy_measured": false,
+      "materialized_qk_reduction": 0.75,
+      "materialized_sparse_qk_pairs": 64,
+      "measured_full_forward_speedup": 1.1434088269880704,
+      "sequence_length": 16,
+      "sparse_full_forward_median_ms": 21.098771000000127
+    }
+  },
+  "failed_gates": [],
+  "gates": {
+    "all_primary_results_qualified": true,
+    "fast_state_exact_24384_bytes": true,
+    "frozen_semantics_and_parameters_exact": true,
+    "m429_online_fields_clean": true,
+    "m431_information_audit_passed": true,
+    "m433_shared_core_updated_all_seeds": true,
+    "model_parameter_count_exact_1451388": true,
+    "online_audit_manifest_separated": true
+  },
+  "information_access": {
+    "all_online_shards_clean": true,
+    "audit_manifest_decision": "M428_FRESH_TWO_SHIFT_STREAMS_QUALIFIED",
+    "forbidden_online_fields": [],
+    "observed_online_fields": [
+      "behavior_actions",
+      "current_observations",
+      "episode_seeds",
+      "observed_endpoint_observations",
+      "steps",
+      "stream_indices"
+    ],
+    "online_and_audit_manifests_distinct": true,
+    "online_manifest_decision": "M428_FRESH_TWO_SHIFT_STREAMS_QUALIFIED",
+    "online_shards": 20,
+    "rows": [
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica0_door-open-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica0_pick-place-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica0_push-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica0_reach-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica1_door-open-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica1_pick-place-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica1_push-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica1_reach-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica2_door-open-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica2_pick-place-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica2_push-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica2_reach-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica3_door-open-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica3_pick-place-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica3_push-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica3_reach-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica4_door-open-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica4_pick-place-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica4_push-v3_two_shift.npz",
+        "forbidden_fields": []
+      },
+      {
+        "fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "file": "replica4_reach-v3_two_shift.npz",
+        "forbidden_fields": []
+      }
+    ]
+  },
+  "milestone": "M434 final system audit",
+  "model": {
+    "action_path_parameter_values": 8861,
+    "architecture": {
+      "attention_mode": "local_sparse_vectorized",
+      "attention_topk": 4,
+      "beta": 0.85,
+      "dropout": 0.0,
+      "embed_dim": 96,
+      "ff_dim": 192,
+      "heads": 4,
+      "layers": 2,
+      "sequence_length": 16,
+      "use_modality_token": true
+    },
+    "checkpoint_sha256": "6513bc37d9cd3a5a91dedb478ccd54ce87850e6cd06cb1f3fb9437767dece1ff",
+    "inherited_multimodal_parameter_values": 1442527,
+    "model_seed": 42401,
+    "total_parameter_bytes_fp32": 5805552,
+    "total_parameter_values": 1451388
+  },
+  "source_artifact_hashes": {
+    "m429": "6191a32186688b5fc8e4692f4f39244ed2818d0404c9802fa348e83a10a1c033",
+    "m431": "2d9183a93fc39aebbe853975e9ca410c7bada0b711155bde5e240e85edd12083",
+    "m433": "c7fa95bd0be6f1817c9b93ee818d7c4678ea9ebf00b1f7e8f88e858926b768d6",
+    "m433_checkpoint": "6513bc37d9cd3a5a91dedb478ccd54ce87850e6cd06cb1f3fb9437767dece1ff"
+  },
+  "stability": {
+    "interpretation": "Fast-state adaptation is bitwise non-interfering with frozen semantics. M431 full tuning causes semantic-output drift but not aggregate semantic degradation on this short control stream.",
+    "m429_all_model_and_semantic_hashes_exact": true,
+    "m431_all_frozen_model_and_semantic_hashes_exact": true,
+    "m431_full_tuning_changed_all_semantic_hashes": true,
+    "m431_full_tuning_mean_coupled_accuracy_change": 0.0028125,
+    "m431_full_tuning_mean_coupled_loss_relative_change": -0.00020469367353038946
+  }
+}

@@ -1,0 +1,1352 @@
+{
+  "decision": "M428_FRESH_TWO_SHIFT_STREAMS_QUALIFIED",
+  "entries": {
+    "replica0": {
+      "door-open-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138013000,
+            "stage": "shear_a",
+            "step_calls": 152,
+            "stream_index_start": 156,
+            "stream_index_stop": 175,
+            "task": "door-open-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138013001,
+            "stage": "attenuation_a",
+            "step_calls": 152,
+            "stream_index_start": 175,
+            "stream_index_stop": 194,
+            "task": "door-open-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138013002,
+            "stage": "shear_b",
+            "step_calls": 152,
+            "stream_index_start": 194,
+            "stream_index_stop": 213,
+            "task": "door-open-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138013003,
+            "stage": "attenuation_b",
+            "step_calls": 152,
+            "stream_index_start": 213,
+            "stream_index_stop": 232,
+            "task": "door-open-v3"
+          }
+        ]
+      },
+      "pick-place-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138012000,
+            "stage": "shear_a",
+            "step_calls": 104,
+            "stream_index_start": 104,
+            "stream_index_stop": 117,
+            "task": "pick-place-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138012001,
+            "stage": "attenuation_a",
+            "step_calls": 104,
+            "stream_index_start": 117,
+            "stream_index_stop": 130,
+            "task": "pick-place-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138012002,
+            "stage": "shear_b",
+            "step_calls": 104,
+            "stream_index_start": 130,
+            "stream_index_stop": 143,
+            "task": "pick-place-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138012003,
+            "stage": "attenuation_b",
+            "step_calls": 104,
+            "stream_index_start": 143,
+            "stream_index_stop": 156,
+            "task": "pick-place-v3"
+          }
+        ]
+      },
+      "push-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138011000,
+            "stage": "shear_a",
+            "step_calls": 104,
+            "stream_index_start": 52,
+            "stream_index_stop": 65,
+            "task": "push-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138011001,
+            "stage": "attenuation_a",
+            "step_calls": 104,
+            "stream_index_start": 65,
+            "stream_index_stop": 78,
+            "task": "push-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138011002,
+            "stage": "shear_b",
+            "step_calls": 104,
+            "stream_index_start": 78,
+            "stream_index_stop": 91,
+            "task": "push-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138011003,
+            "stage": "attenuation_b",
+            "step_calls": 104,
+            "stream_index_start": 91,
+            "stream_index_stop": 104,
+            "task": "push-v3"
+          }
+        ]
+      },
+      "reach-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138010000,
+            "stage": "shear_a",
+            "step_calls": 104,
+            "stream_index_start": 0,
+            "stream_index_stop": 13,
+            "task": "reach-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138010001,
+            "stage": "attenuation_a",
+            "step_calls": 104,
+            "stream_index_start": 13,
+            "stream_index_stop": 26,
+            "task": "reach-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138010002,
+            "stage": "shear_b",
+            "step_calls": 104,
+            "stream_index_start": 26,
+            "stream_index_stop": 39,
+            "task": "reach-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138010003,
+            "stage": "attenuation_b",
+            "step_calls": 104,
+            "stream_index_start": 39,
+            "stream_index_stop": 52,
+            "task": "reach-v3"
+          }
+        ]
+      }
+    },
+    "replica1": {
+      "door-open-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138113000,
+            "stage": "attenuation_a",
+            "step_calls": 152,
+            "stream_index_start": 388,
+            "stream_index_stop": 407,
+            "task": "door-open-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138113001,
+            "stage": "shear_a",
+            "step_calls": 152,
+            "stream_index_start": 407,
+            "stream_index_stop": 426,
+            "task": "door-open-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138113002,
+            "stage": "attenuation_b",
+            "step_calls": 152,
+            "stream_index_start": 426,
+            "stream_index_stop": 445,
+            "task": "door-open-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138113003,
+            "stage": "shear_b",
+            "step_calls": 152,
+            "stream_index_start": 445,
+            "stream_index_stop": 464,
+            "task": "door-open-v3"
+          }
+        ]
+      },
+      "pick-place-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138112000,
+            "stage": "attenuation_a",
+            "step_calls": 104,
+            "stream_index_start": 336,
+            "stream_index_stop": 349,
+            "task": "pick-place-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138112001,
+            "stage": "shear_a",
+            "step_calls": 104,
+            "stream_index_start": 349,
+            "stream_index_stop": 362,
+            "task": "pick-place-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138112002,
+            "stage": "attenuation_b",
+            "step_calls": 104,
+            "stream_index_start": 362,
+            "stream_index_stop": 375,
+            "task": "pick-place-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138112003,
+            "stage": "shear_b",
+            "step_calls": 104,
+            "stream_index_start": 375,
+            "stream_index_stop": 388,
+            "task": "pick-place-v3"
+          }
+        ]
+      },
+      "push-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138111000,
+            "stage": "attenuation_a",
+            "step_calls": 104,
+            "stream_index_start": 284,
+            "stream_index_stop": 297,
+            "task": "push-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138111001,
+            "stage": "shear_a",
+            "step_calls": 104,
+            "stream_index_start": 297,
+            "stream_index_stop": 310,
+            "task": "push-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138111002,
+            "stage": "attenuation_b",
+            "step_calls": 104,
+            "stream_index_start": 310,
+            "stream_index_stop": 323,
+            "task": "push-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138111003,
+            "stage": "shear_b",
+            "step_calls": 104,
+            "stream_index_start": 323,
+            "stream_index_stop": 336,
+            "task": "push-v3"
+          }
+        ]
+      },
+      "reach-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138110000,
+            "stage": "attenuation_a",
+            "step_calls": 104,
+            "stream_index_start": 232,
+            "stream_index_stop": 245,
+            "task": "reach-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138110001,
+            "stage": "shear_a",
+            "step_calls": 104,
+            "stream_index_start": 245,
+            "stream_index_stop": 258,
+            "task": "reach-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138110002,
+            "stage": "attenuation_b",
+            "step_calls": 104,
+            "stream_index_start": 258,
+            "stream_index_stop": 271,
+            "task": "reach-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138110003,
+            "stage": "shear_b",
+            "step_calls": 104,
+            "stream_index_start": 271,
+            "stream_index_stop": 284,
+            "task": "reach-v3"
+          }
+        ]
+      }
+    },
+    "replica2": {
+      "door-open-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138213000,
+            "stage": "shear_a",
+            "step_calls": 152,
+            "stream_index_start": 620,
+            "stream_index_stop": 639,
+            "task": "door-open-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138213001,
+            "stage": "attenuation_a",
+            "step_calls": 152,
+            "stream_index_start": 639,
+            "stream_index_stop": 658,
+            "task": "door-open-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138213002,
+            "stage": "shear_b",
+            "step_calls": 152,
+            "stream_index_start": 658,
+            "stream_index_stop": 677,
+            "task": "door-open-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138213003,
+            "stage": "attenuation_b",
+            "step_calls": 152,
+            "stream_index_start": 677,
+            "stream_index_stop": 696,
+            "task": "door-open-v3"
+          }
+        ]
+      },
+      "pick-place-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138212000,
+            "stage": "shear_a",
+            "step_calls": 104,
+            "stream_index_start": 568,
+            "stream_index_stop": 581,
+            "task": "pick-place-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138212001,
+            "stage": "attenuation_a",
+            "step_calls": 104,
+            "stream_index_start": 581,
+            "stream_index_stop": 594,
+            "task": "pick-place-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138212002,
+            "stage": "shear_b",
+            "step_calls": 104,
+            "stream_index_start": 594,
+            "stream_index_stop": 607,
+            "task": "pick-place-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138212003,
+            "stage": "attenuation_b",
+            "step_calls": 104,
+            "stream_index_start": 607,
+            "stream_index_stop": 620,
+            "task": "pick-place-v3"
+          }
+        ]
+      },
+      "push-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138211000,
+            "stage": "shear_a",
+            "step_calls": 104,
+            "stream_index_start": 516,
+            "stream_index_stop": 529,
+            "task": "push-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138211001,
+            "stage": "attenuation_a",
+            "step_calls": 104,
+            "stream_index_start": 529,
+            "stream_index_stop": 542,
+            "task": "push-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138211002,
+            "stage": "shear_b",
+            "step_calls": 104,
+            "stream_index_start": 542,
+            "stream_index_stop": 555,
+            "task": "push-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138211003,
+            "stage": "attenuation_b",
+            "step_calls": 104,
+            "stream_index_start": 555,
+            "stream_index_stop": 568,
+            "task": "push-v3"
+          }
+        ]
+      },
+      "reach-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138210000,
+            "stage": "shear_a",
+            "step_calls": 104,
+            "stream_index_start": 464,
+            "stream_index_stop": 477,
+            "task": "reach-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138210001,
+            "stage": "attenuation_a",
+            "step_calls": 104,
+            "stream_index_start": 477,
+            "stream_index_stop": 490,
+            "task": "reach-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138210002,
+            "stage": "shear_b",
+            "step_calls": 104,
+            "stream_index_start": 490,
+            "stream_index_stop": 503,
+            "task": "reach-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138210003,
+            "stage": "attenuation_b",
+            "step_calls": 104,
+            "stream_index_start": 503,
+            "stream_index_stop": 516,
+            "task": "reach-v3"
+          }
+        ]
+      }
+    },
+    "replica3": {
+      "door-open-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138313000,
+            "stage": "attenuation_a",
+            "step_calls": 152,
+            "stream_index_start": 852,
+            "stream_index_stop": 871,
+            "task": "door-open-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138313001,
+            "stage": "shear_a",
+            "step_calls": 152,
+            "stream_index_start": 871,
+            "stream_index_stop": 890,
+            "task": "door-open-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138313002,
+            "stage": "attenuation_b",
+            "step_calls": 152,
+            "stream_index_start": 890,
+            "stream_index_stop": 909,
+            "task": "door-open-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138313003,
+            "stage": "shear_b",
+            "step_calls": 152,
+            "stream_index_start": 909,
+            "stream_index_stop": 928,
+            "task": "door-open-v3"
+          }
+        ]
+      },
+      "pick-place-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138312000,
+            "stage": "attenuation_a",
+            "step_calls": 104,
+            "stream_index_start": 800,
+            "stream_index_stop": 813,
+            "task": "pick-place-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138312001,
+            "stage": "shear_a",
+            "step_calls": 104,
+            "stream_index_start": 813,
+            "stream_index_stop": 826,
+            "task": "pick-place-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138312002,
+            "stage": "attenuation_b",
+            "step_calls": 104,
+            "stream_index_start": 826,
+            "stream_index_stop": 839,
+            "task": "pick-place-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138312003,
+            "stage": "shear_b",
+            "step_calls": 104,
+            "stream_index_start": 839,
+            "stream_index_stop": 852,
+            "task": "pick-place-v3"
+          }
+        ]
+      },
+      "push-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138311000,
+            "stage": "attenuation_a",
+            "step_calls": 104,
+            "stream_index_start": 748,
+            "stream_index_stop": 761,
+            "task": "push-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138311001,
+            "stage": "shear_a",
+            "step_calls": 104,
+            "stream_index_start": 761,
+            "stream_index_stop": 774,
+            "task": "push-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138311002,
+            "stage": "attenuation_b",
+            "step_calls": 104,
+            "stream_index_start": 774,
+            "stream_index_stop": 787,
+            "task": "push-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138311003,
+            "stage": "shear_b",
+            "step_calls": 104,
+            "stream_index_start": 787,
+            "stream_index_stop": 800,
+            "task": "push-v3"
+          }
+        ]
+      },
+      "reach-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138310000,
+            "stage": "attenuation_a",
+            "step_calls": 104,
+            "stream_index_start": 696,
+            "stream_index_stop": 709,
+            "task": "reach-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138310001,
+            "stage": "shear_a",
+            "step_calls": 104,
+            "stream_index_start": 709,
+            "stream_index_stop": 722,
+            "task": "reach-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138310002,
+            "stage": "attenuation_b",
+            "step_calls": 104,
+            "stream_index_start": 722,
+            "stream_index_stop": 735,
+            "task": "reach-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138310003,
+            "stage": "shear_b",
+            "step_calls": 104,
+            "stream_index_start": 735,
+            "stream_index_stop": 748,
+            "task": "reach-v3"
+          }
+        ]
+      }
+    },
+    "replica4": {
+      "door-open-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138413000,
+            "stage": "shear_a",
+            "step_calls": 152,
+            "stream_index_start": 1084,
+            "stream_index_stop": 1103,
+            "task": "door-open-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138413001,
+            "stage": "attenuation_a",
+            "step_calls": 152,
+            "stream_index_start": 1103,
+            "stream_index_stop": 1122,
+            "task": "door-open-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138413002,
+            "stage": "shear_b",
+            "step_calls": 152,
+            "stream_index_start": 1122,
+            "stream_index_stop": 1141,
+            "task": "door-open-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 152,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 19,
+            "reset_calls": 1,
+            "seed": 138413003,
+            "stage": "attenuation_b",
+            "step_calls": 152,
+            "stream_index_start": 1141,
+            "stream_index_stop": 1160,
+            "task": "door-open-v3"
+          }
+        ]
+      },
+      "pick-place-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138412000,
+            "stage": "shear_a",
+            "step_calls": 104,
+            "stream_index_start": 1032,
+            "stream_index_stop": 1045,
+            "task": "pick-place-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138412001,
+            "stage": "attenuation_a",
+            "step_calls": 104,
+            "stream_index_start": 1045,
+            "stream_index_stop": 1058,
+            "task": "pick-place-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138412002,
+            "stage": "shear_b",
+            "step_calls": 104,
+            "stream_index_start": 1058,
+            "stream_index_stop": 1071,
+            "task": "pick-place-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138412003,
+            "stage": "attenuation_b",
+            "step_calls": 104,
+            "stream_index_start": 1071,
+            "stream_index_stop": 1084,
+            "task": "pick-place-v3"
+          }
+        ]
+      },
+      "push-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138411000,
+            "stage": "shear_a",
+            "step_calls": 104,
+            "stream_index_start": 980,
+            "stream_index_stop": 993,
+            "task": "push-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138411001,
+            "stage": "attenuation_a",
+            "step_calls": 104,
+            "stream_index_start": 993,
+            "stream_index_stop": 1006,
+            "task": "push-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138411002,
+            "stage": "shear_b",
+            "step_calls": 104,
+            "stream_index_start": 1006,
+            "stream_index_stop": 1019,
+            "task": "push-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138411003,
+            "stage": "attenuation_b",
+            "step_calls": 104,
+            "stream_index_start": 1019,
+            "stream_index_stop": 1032,
+            "task": "push-v3"
+          }
+        ]
+      },
+      "reach-v3": {
+        "stage_audit_map": [
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138410000,
+            "stage": "shear_a",
+            "step_calls": 104,
+            "stream_index_start": 928,
+            "stream_index_stop": 941,
+            "task": "reach-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138410001,
+            "stage": "attenuation_a",
+            "step_calls": 104,
+            "stream_index_start": 941,
+            "stream_index_stop": 954,
+            "task": "reach-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "shear",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138410002,
+            "stage": "shear_b",
+            "step_calls": 104,
+            "stream_index_start": 954,
+            "stream_index_stop": 967,
+            "task": "reach-v3"
+          },
+          {
+            "chronological": true,
+            "elapsed_steps": 104,
+            "mechanism": "attenuation",
+            "one_irreversible_timeline": true,
+            "records": 13,
+            "reset_calls": 1,
+            "seed": 138410003,
+            "stage": "attenuation_b",
+            "step_calls": 104,
+            "stream_index_start": 967,
+            "stream_index_stop": 980,
+            "task": "reach-v3"
+          }
+        ]
+      }
+    }
+  },
+  "episode_seeds_audit_only": {
+    "replica0": {
+      "door-open-v3": {
+        "attenuation_a": 138013001,
+        "attenuation_b": 138013003,
+        "shear_a": 138013000,
+        "shear_b": 138013002
+      },
+      "pick-place-v3": {
+        "attenuation_a": 138012001,
+        "attenuation_b": 138012003,
+        "shear_a": 138012000,
+        "shear_b": 138012002
+      },
+      "push-v3": {
+        "attenuation_a": 138011001,
+        "attenuation_b": 138011003,
+        "shear_a": 138011000,
+        "shear_b": 138011002
+      },
+      "reach-v3": {
+        "attenuation_a": 138010001,
+        "attenuation_b": 138010003,
+        "shear_a": 138010000,
+        "shear_b": 138010002
+      }
+    },
+    "replica1": {
+      "door-open-v3": {
+        "attenuation_a": 138113000,
+        "attenuation_b": 138113002,
+        "shear_a": 138113001,
+        "shear_b": 138113003
+      },
+      "pick-place-v3": {
+        "attenuation_a": 138112000,
+        "attenuation_b": 138112002,
+        "shear_a": 138112001,
+        "shear_b": 138112003
+      },
+      "push-v3": {
+        "attenuation_a": 138111000,
+        "attenuation_b": 138111002,
+        "shear_a": 138111001,
+        "shear_b": 138111003
+      },
+      "reach-v3": {
+        "attenuation_a": 138110000,
+        "attenuation_b": 138110002,
+        "shear_a": 138110001,
+        "shear_b": 138110003
+      }
+    },
+    "replica2": {
+      "door-open-v3": {
+        "attenuation_a": 138213001,
+        "attenuation_b": 138213003,
+        "shear_a": 138213000,
+        "shear_b": 138213002
+      },
+      "pick-place-v3": {
+        "attenuation_a": 138212001,
+        "attenuation_b": 138212003,
+        "shear_a": 138212000,
+        "shear_b": 138212002
+      },
+      "push-v3": {
+        "attenuation_a": 138211001,
+        "attenuation_b": 138211003,
+        "shear_a": 138211000,
+        "shear_b": 138211002
+      },
+      "reach-v3": {
+        "attenuation_a": 138210001,
+        "attenuation_b": 138210003,
+        "shear_a": 138210000,
+        "shear_b": 138210002
+      }
+    },
+    "replica3": {
+      "door-open-v3": {
+        "attenuation_a": 138313000,
+        "attenuation_b": 138313002,
+        "shear_a": 138313001,
+        "shear_b": 138313003
+      },
+      "pick-place-v3": {
+        "attenuation_a": 138312000,
+        "attenuation_b": 138312002,
+        "shear_a": 138312001,
+        "shear_b": 138312003
+      },
+      "push-v3": {
+        "attenuation_a": 138311000,
+        "attenuation_b": 138311002,
+        "shear_a": 138311001,
+        "shear_b": 138311003
+      },
+      "reach-v3": {
+        "attenuation_a": 138310000,
+        "attenuation_b": 138310002,
+        "shear_a": 138310001,
+        "shear_b": 138310003
+      }
+    },
+    "replica4": {
+      "door-open-v3": {
+        "attenuation_a": 138413001,
+        "attenuation_b": 138413003,
+        "shear_a": 138413000,
+        "shear_b": 138413002
+      },
+      "pick-place-v3": {
+        "attenuation_a": 138412001,
+        "attenuation_b": 138412003,
+        "shear_a": 138412000,
+        "shear_b": 138412002
+      },
+      "push-v3": {
+        "attenuation_a": 138411001,
+        "attenuation_b": 138411003,
+        "shear_a": 138411000,
+        "shear_b": 138411002
+      },
+      "reach-v3": {
+        "attenuation_a": 138410001,
+        "attenuation_b": 138410003,
+        "shear_a": 138410000,
+        "shear_b": 138410002
+      }
+    }
+  },
+  "mechanism_values_audit_only": {
+    "attenuation": 0.4,
+    "shear": 0.45
+  },
+  "milestone": "M429-A post-online audit manifest"
+}

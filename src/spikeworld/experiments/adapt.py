@@ -11,7 +11,12 @@ import numpy as np
 import torch
 from torch.nn import functional as F
 
-from ..adaptation import MechanismRouter, PersistentFastState, candidate_spec
+from ..adaptation import (
+    AdaptationConfig,
+    MechanismRouter,
+    PersistentFastState,
+    candidate_spec,
+)
 from ..data import load_online_shard
 from ..model import TASKS, tensor_hash
 from .common import device_from, load_full_checkpoint, read_config, write_json
@@ -156,6 +161,7 @@ def main() -> None:
     cfg = read_config(args.config)
     paths, run = cfg["paths"], cfg["run"]
     device = device_from(run.get("device", "cpu"))
+    adaptation_config = AdaptationConfig.from_mapping(run)
     families, values = candidate_spec(device)
     online = json.loads(Path(paths["online_manifest"]).read_text())
     pending, integrity = [], {}
@@ -179,6 +185,7 @@ def main() -> None:
                     bundle["basis"].to(device),
                     families,
                     values,
+                    adaptation_config,
                 ).to(device)
                 for task_index, task in enumerate(TASKS):
                     shard = load_online_shard(

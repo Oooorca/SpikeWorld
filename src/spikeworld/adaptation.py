@@ -27,6 +27,16 @@ class AdaptationConfig:
     residual_radius: float = 0.20
     action_cap: float = ACTION_CAP
 
+    @classmethod
+    def from_mapping(cls, values: dict[str, object]) -> AdaptationConfig:
+        """Parse the deployment controls shared by offline and live runners."""
+        return cls(
+            router_observations=int(values["router_observations"]),
+            residual_learning_rate=float(values["residual_learning_rate"]),
+            residual_radius=float(values["residual_radius"]),
+            action_cap=float(values["action_cap"]),
+        )
+
 
 def candidate_spec(device: torch.device | str = "cpu") -> tuple[list[str], torch.Tensor]:
     shear = torch.linspace(0.05, 0.75, 15, device=device)

@@ -9,9 +9,12 @@ build/
 artifacts/*
 !artifacts/README.md
 !artifacts/manifest.json
+!artifacts/shifts/
+!artifacts/shifts/**
 outputs/
 *.pt
 *.pth
 *.ckpt
 *.npz
+!artifacts/shifts/*.npz
 .DS_Store

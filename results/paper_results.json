@@ -11,7 +11,10 @@
   "control": {
     "fast_reward": 422.58465320554353,
     "fast_reward_delta": 7.904489037654288,
-    "fast_reward_delta_ci95": [2.4785862129038407, 14.060020147410496],
+    "fast_reward_delta_ci95": [
+      2.4785862129038407,
+      14.060020147410496
+    ],
     "fast_success": 0.6666666666666666,
     "frozen_reward": 414.68016416788913,
     "frozen_success": 0.5333333333333333,
@@ -24,8 +27,14 @@
     "action_mse_improvement": 0.1709561687693975,
     "binding_r1_change": 0.018125001713633536,
     "next_slice_improvement": 0.007535254543733538,
-    "semantic_accuracy_change": 0.01795238095238095,
-    "seeds": [42401, 42402, 42403, 42404, 42405]
+    "seeds": [
+      42401,
+      42402,
+      42403,
+      42404,
+      42405
+    ],
+    "semantic_accuracy_change": 0.01795238095238095
   },
   "system": {
     "allowed_qk_reduction": 0.7734375,

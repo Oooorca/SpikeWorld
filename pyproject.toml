@@ -28,6 +28,7 @@ spikeworld-adapt = "spikeworld.experiments.adapt:main"
 spikeworld-control = "spikeworld.experiments.control:main"
 spikeworld-audit = "spikeworld.experiments.audit:main"
 spikeworld-verify = "spikeworld.results:main"
+spikeworld-fetch = "spikeworld.artifacts:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -38,4 +39,3 @@ testpaths = ["tests"]
 [tool.ruff]
 line-length = 92
 target-version = "py310"
-

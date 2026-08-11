@@ -25,5 +25,8 @@ macro_horizon = 8
 max_steps = 104
 action_noise_std = 0.05
 action_noise_offset = 5150
+router_observations = 4
+residual_learning_rate = 0.02
+residual_radius = 0.20
+action_cap = 0.05
 arms = ["frozen", "safe_fast", "full_tuning", "rls", "replay", "oracle"]
-

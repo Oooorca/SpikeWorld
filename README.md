@@ -18,28 +18,27 @@ updated from the observed next-state prediction error.
 | `spikeworld-adapt` | Registered-Shift Adaptation | Prequential shear/attenuation adaptation |
 | `spikeworld-control` | Closed-Loop Control | Live Meta-World comparison |
 | `spikeworld-audit` | Deployment Audit | Parameter, state-size, sparsity, and input audit |
-| `spikeworld-verify` | — | Check the immutable paper-number summary |
+| `spikeworld-verify` | Result provenance | Rebuild and check every compact paper number |
+| `spikeworld-fetch` | Artifact retrieval | Download and hash-check the public checkpoint |
 
-The repository intentionally excludes exploratory scripts, failed variants,
-raw trajectories, checkpoints, caches, and generated result figures. Apart
-from the paper overview above, the source tree contains only the final
-architecture, adaptation rule, experiment entrypoints, configurations, tests,
-and a compact result summary.
+The source tree contains the final architecture, adaptation rule, experiment
+entrypoints, configurations, tests, causal shift streams, and the four raw JSON
+outputs from which the paper tables are rebuilt. Exploratory variants and
+caches are intentionally excluded.
 
 ## Install
 
-Python 3.10 or newer is required.
+Python 3.10 or newer and [uv](https://docs.astral.sh/uv/) are required for the
+locked environment.
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -e '.[train,dev]'
+uv sync --locked --extra train --extra dev
 ```
 
 Install the optional simulator stack only for the live control experiment:
 
 ```bash
-pip install -e '.[control]'
+uv sync --locked --extra control
 ```
 
 ## Quick checks
@@ -47,21 +46,29 @@ pip install -e '.[control]'
 These checks need no external artifacts:
 
 ```bash
-pytest -q
-spikeworld-verify
+uv run pytest -q
+uv run spikeworld-verify
 ```
 
 They verify the exact model size (`1,451,388` parameters), the exact fast-state
 budget (`24,384` bytes), causal sparse-attention accounting, the online input
-boundary, and the paper-result summary.
+boundary, same-input semantic-logit invariance, decision-5 causal timing, and
+raw-output reconstruction of the paper summary.
 
 ## Artifacts
 
-Large artifacts are kept outside Git. Place them under `artifacts/` according
-to [artifacts/README.md](artifacts/README.md). The representative paper
-checkpoint must have SHA-256
-`6513bc37d9cd3a5a91dedb478ccd54ce87850e6cd06cb1f3fb9437767dece1ff`.
-The code loads this checkpoint strictly; all tensor names and shapes must match.
+The registered-shift streams and their separately held audit manifest are
+versioned under `artifacts/shifts/`. Download the representative paper
+checkpoint from the immutable GitHub release with:
+
+```bash
+uv run spikeworld-fetch
+```
+
+The downloader verifies SHA-256
+`6513bc37d9cd3a5a91dedb478ccd54ce87850e6cd06cb1f3fb9437767dece1ff`
+before installing the file. The complete artifact boundary is documented in
+[artifacts/README.md](artifacts/README.md).
 
 ## Reproduce
 
@@ -104,9 +111,13 @@ The locked experiments report:
 | Sparse QK reduction | 77.34% |
 
 The full-precision values are in
-[`results/paper_results.json`](results/paper_results.json). This snapshot is not
-a substitute for raw trajectories; it is a small guard against transcription
-drift between code, tables, and the paper.
+[`results/paper_results.json`](results/paper_results.json). Unlike a hard-coded
+snapshot check, `spikeworld-verify` derives this file from the archived outputs
+in `results/raw/`. To rewrite the JSON and the human-readable tables:
+
+```bash
+uv run spikeworld-verify --write
+```
 
 ## Scope
 
@@ -114,4 +125,7 @@ The released experiments cover registered shear and attenuation families. They
 do not establish unrestricted continual learning, discovery of arbitrary
 unknown mechanisms, superiority to linear system identification, or measured
 neuromorphic-chip energy savings. In the linear attenuation control condition,
-RLS has the highest non-oracle mean reward.
+RLS has the highest non-oracle mean reward. The public representative checkpoint
+and causal shift streams support integrity and interface checks; a full
+five-seed retraining run still requires the upstream sensory and action-fitting
+datasets listed in the artifact contract.

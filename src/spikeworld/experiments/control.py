@@ -12,6 +12,7 @@ from torch.nn import functional as F
 
 from ..adaptation import (
     ROUTES,
+    AdaptationConfig,
     MechanismRouter,
     PersistentFastState,
     candidate_signature,
@@ -193,16 +194,24 @@ class FullTuningController:
         }
 
 
-def controllers(model, bundle, device):
+def controllers(model, bundle, device, config: AdaptationConfig):
     families, values = candidate_spec(device)
     router = MechanismRouter(int(bundle["router_feature_dim"])).to(device)
     router.load_state_dict(bundle["router_state"], strict=True)
     router.freeze()
     memory = PersistentFastState(
-        bundle["basis_mean"].to(device), bundle["basis"].to(device), families, values
+        bundle["basis_mean"].to(device),
+        bundle["basis"].to(device),
+        families,
+        values,
+        config,
     ).to(device)
     evidence_memory = EvidenceOnlyFastState(
-        bundle["basis_mean"].to(device), bundle["basis"].to(device), families, values
+        bundle["basis_mean"].to(device),
+        bundle["basis"].to(device),
+        families,
+        values,
+        config,
     ).to(device)
     return {
         "safe_fast": FastController(model, router, memory),
@@ -311,6 +320,7 @@ def main() -> None:
     cfg = read_config(args.config)
     paths, run = cfg["paths"], cfg["run"]
     device = device_from(run.get("device", "cpu"))
+    adaptation_config = AdaptationConfig.from_mapping(run)
     tasks = run["tasks"][:1] if args.smoke else run["tasks"]
     replicas = 1 if args.smoke else int(run["replicas"])
     checkpoints = (
@@ -327,7 +337,7 @@ def main() -> None:
         before = tensor_hash(model)
         bundle = torch.load(bundle_path, map_location="cpu", weights_only=False)
         for task_index, task in enumerate(tasks):
-            local_controllers = controllers(model, bundle, device)
+            local_controllers = controllers(model, bundle, device, adaptation_config)
             for replica in range(replicas):
                 seed = int(run["base_seed"]) + task_index * 1_000 + replica
                 for arm in run["arms"]:

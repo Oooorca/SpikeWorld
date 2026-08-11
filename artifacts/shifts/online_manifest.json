@@ -1,0 +1,293 @@
+{
+  "decision": "M428_FRESH_TWO_SHIFT_STREAMS_QUALIFIED",
+  "entries": {
+    "replica0": {
+      "door-open-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica0_door-open-v3_two_shift.npz",
+        "records": 76,
+        "sha256": "8584b7c7035175bfe8c76923be9bde97e9c626ffc09468044c79ddf2c73f5bcb"
+      },
+      "pick-place-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica0_pick-place-v3_two_shift.npz",
+        "records": 52,
+        "sha256": "87cc0183d1b6b60476f5b3d2cc905527e7326ef306e4476714b5693e80bab8a4"
+      },
+      "push-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica0_push-v3_two_shift.npz",
+        "records": 52,
+        "sha256": "5408b421395d9be7ac7e2de9167571e9c2e2eb9a4ac885596bf11f51ce28d292"
+      },
+      "reach-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica0_reach-v3_two_shift.npz",
+        "records": 52,
+        "sha256": "ca3066513425f45f9a2827318beb0027477d8b1105b506365e0a47b9c92408c4"
+      }
+    },
+    "replica1": {
+      "door-open-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica1_door-open-v3_two_shift.npz",
+        "records": 76,
+        "sha256": "9ec54ace6cb604206fa023d8c908cd8c48a0454227bd99b08373fc8ee4238c7b"
+      },
+      "pick-place-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica1_pick-place-v3_two_shift.npz",
+        "records": 52,
+        "sha256": "d4ee53e8a45c24cde6290675ede212eb99b667fc866d18f4a6b080543c44af7d"
+      },
+      "push-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica1_push-v3_two_shift.npz",
+        "records": 52,
+        "sha256": "1ceb47462802dd5ce50a6e88cebe1badd97a86f9b0ca268726b1c508db87baf7"
+      },
+      "reach-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica1_reach-v3_two_shift.npz",
+        "records": 52,
+        "sha256": "1ffffacbdf3da4139973c34491f296796035bbfbd5cfa24fce05b90e557f6369"
+      }
+    },
+    "replica2": {
+      "door-open-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica2_door-open-v3_two_shift.npz",
+        "records": 76,
+        "sha256": "9adfe0f37ce1316e182f6a42ccd850d06a1510f406fdd2afb792231109dbb76f"
+      },
+      "pick-place-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica2_pick-place-v3_two_shift.npz",
+        "records": 52,
+        "sha256": "6f0983ed34f96dcb3e225dababe725363aeab9f8222ea9a49996efa182645040"
+      },
+      "push-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica2_push-v3_two_shift.npz",
+        "records": 52,
+        "sha256": "a723f404d2593627543f592bda37710143e72d7e3006ea6877b859589572eb6e"
+      },
+      "reach-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica2_reach-v3_two_shift.npz",
+        "records": 52,
+        "sha256": "821a9b4a0331a54208e4bbfa44c89a6dd5638c8f10433330bc9207913187707a"
+      }
+    },
+    "replica3": {
+      "door-open-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica3_door-open-v3_two_shift.npz",
+        "records": 76,
+        "sha256": "a84c0c472bc6116d7c9eaa3fd9e2844dfc7b52654a87dfb1e3d50b94cfa6ca82"
+      },
+      "pick-place-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica3_pick-place-v3_two_shift.npz",
+        "records": 52,
+        "sha256": "2b45d6b7bcecafd68652b1472d66122a23ac8cd8577db4abd309b5f7db50c191"
+      },
+      "push-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica3_push-v3_two_shift.npz",
+        "records": 52,
+        "sha256": "c03dbcdb215c63afcd16a04247199f32a4499a1a1f437da6c846c9e9754a5cfd"
+      },
+      "reach-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica3_reach-v3_two_shift.npz",
+        "records": 52,
+        "sha256": "02bdfc11096be4938bf1f413302e5f7371281ad3554ec68c3e9e4c3e7cf935ac"
+      }
+    },
+    "replica4": {
+      "door-open-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica4_door-open-v3_two_shift.npz",
+        "records": 76,
+        "sha256": "d5050dc7c9bdc67dea83f45c9f5f13acd3ba3b66fea91d65796935d751df5147"
+      },
+      "pick-place-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica4_pick-place-v3_two_shift.npz",
+        "records": 52,
+        "sha256": "cd5fe2d979a0076df44ccff4254eb794462ba50a05730988f1c8e85d03c06653"
+      },
+      "push-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica4_push-v3_two_shift.npz",
+        "records": 52,
+        "sha256": "cce409767172ce127f4dd530b7287b8f8932b9067ca1fe97bebe584257d0f05d"
+      },
+      "reach-v3": {
+        "online_fields": [
+          "behavior_actions",
+          "current_observations",
+          "episode_seeds",
+          "observed_endpoint_observations",
+          "steps",
+          "stream_indices"
+        ],
+        "path": "/Users/didi/private/SNN/research/outputs/metaworld_m429a_safe_fresh_two_shift_streams/replica4_reach-v3_two_shift.npz",
+        "records": 52,
+        "sha256": "a691350fe052a8fbf05d4c0feaa0df4bcd65203108ad26101c6734e945984bb8"
+      }
+    }
+  },
+  "gates": {
+    "all_episodes_chronological": true,
+    "all_episodes_irreversible": true,
+    "all_seeds_fresh_unique": true,
+    "method_and_evaluator_preregistered": true,
+    "online_fields_exclude_audit_information": true,
+    "pre_environment_lock_unchanged": true
+  },
+  "milestone": "M429-A online-only manifest",
+  "pre_environment_lock_sha256": "d1ff2ed29dc4be25c5d72c0323ba90f3823faace14729b6e01cf93b7a5e760e5",
+  "pre_registered": {
+    "base_runner_sha256": "42d197d24dd45dec0c0812a620c66121298bb36df0457c54bd425524df05dd24",
+    "collector_sha256": "196be212ebe1fb1688968a0cded98cc5f772d8962f6bcf32d409db425c499b16",
+    "contract_sha256": "aafd2c02a0ea01576d34148c2917d13a37de33e2fa7086591736b44cf7a1cfd4",
+    "executor_sha256": "f9b2fd4619c370276911a71fbd8cecc8177a0f8c28c6146e4a3d096256b4a32e",
+    "runner_sha256": "42d197d24dd45dec0c0812a620c66121298bb36df0457c54bd425524df05dd24"
+  },
+  "runtime_seconds": 26.788882970809937
+}
