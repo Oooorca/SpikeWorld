@@ -18,3 +18,5 @@ outputs/
 *.npz
 !artifacts/shifts/*.npz
 .DS_Store
+._*
+__MACOSX/

@@ -110,3 +110,42 @@ def test_four_observations_first_affect_decision_five():
         assert torch.equal(command, desired)
     assert not torch.equal(commands[4], desired)
     assert torch.all((commands[4] - desired).abs() <= 0.050001)
+
+
+@pytest.mark.parametrize("route_index", [0, 1, 2, 3])
+def test_routing_history_is_bounded_and_scores_match_legacy_prefix(route_index):
+    torch.manual_seed(29)
+    model = SpikeWorld(ModelConfig()).eval()
+    memory = PersistentFastState(torch.zeros(96), torch.eye(96)[:30])
+    state = torch.zeros(1, 39)
+    action = torch.tensor([[0.4, -0.3, 0.0, 0.0]])
+    task = torch.zeros(1, dtype=torch.long)
+    endpoint = state + 0.03
+    signature, losses = candidate_signature(
+        model, state, action, task, endpoint, memory.families, memory.values
+    )
+    router = MechanismRouter(signature.numel()).eval()
+    with torch.no_grad():
+        for parameter in router.parameters():
+            parameter.zero_()
+        router.network[-1].bias[route_index] = 10.0
+    router.freeze()
+    expected_scores = torch.zeros_like(losses)
+    for step in range(12):
+        memory.observe(model, router, state, action, task, endpoint)
+        if step == 3 and route_index in (1, 2):
+            expected_scores += torch.stack([losses] * 4).sum(0)
+        elif step > 3 and route_index in (1, 2):
+            expected_scores += losses
+        assert torch.equal(memory.scores, expected_scores)
+        if step < 3:
+            assert memory.prefix_bytes() == (step + 1) * (247 + 32) * 4
+        else:
+            assert memory.prefix_bytes() == 0
+            assert not memory._episode_signatures and not memory._pending_losses
+    assert memory.runtime_accounting()["peak_mutable_numeric_bytes"] == 28848
+    assert float(memory.count) == (12 if route_index in (1, 2) else 0)
+    memory.start_episode()
+    assert not memory._route_locked
+    memory.observe(model, router, state, action, task, endpoint)
+    assert memory.prefix_bytes() == 1116

@@ -42,6 +42,9 @@ def main() -> None:
         },
         "fast_state": {
             **memory.accounting(),
+            **memory.runtime_accounting(),
+            "registered_four_step_prefix_bytes": 4464,
+            "registered_peak_mutable_numeric_bytes": 28848,
             "registered_bytes": FAST_BYTES,
             "fraction_of_model": FAST_BYTES / parameter_bytes,
         },

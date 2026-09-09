@@ -1,0 +1,3 @@
+# Evidence manifests hash exact bytes; do not rewrite JSON newlines on checkout.
+results/current/** -text
+paper/*.pdf -text

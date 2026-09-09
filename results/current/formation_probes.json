@@ -1,0 +1,464 @@
+{
+  "claim_boundary": {
+    "excludes": [
+      "next-event prediction causes semantic binding",
+      "next-event prediction is superior to all alternative self-supervised objectives",
+      "text-side composition necessity",
+      "open-world multimodal generation"
+    ],
+    "supports": "causal future prediction is a learnable shared formation/supervision interface with bounded temporal, object-future, compositional, semantic, and action evidence"
+  },
+  "evidence": {
+    "M60": {
+      "final_full_nll": {
+        "mean": 4.911834239959717,
+        "n": 3,
+        "std_population": 0.01138334994602983,
+        "values": [
+          4.904651165008545,
+          4.90294885635376,
+          4.927902698516846
+        ]
+      },
+      "final_order_nll": {
+        "mean": 11.035661443074543,
+        "n": 3,
+        "std_population": 0.3032073128555592,
+        "values": [
+          10.628295135498046,
+          11.123406982421875,
+          11.355282211303711
+        ]
+      },
+      "final_rate_nll": {
+        "mean": 6.929271316528321,
+        "n": 3,
+        "std_population": 0.3562691936936353,
+        "values": [
+          6.561697006225586,
+          7.411485099792481,
+          6.814631843566895
+        ]
+      },
+      "initial_full_nll": {
+        "mean": 9.14721902211507,
+        "n": 3,
+        "std_population": 0.16801625104435153,
+        "values": [
+          9.103235816955566,
+          8.966989707946777,
+          9.37143154144287
+        ]
+      },
+      "initial_order_nll": {
+        "mean": 9.048937988281251,
+        "n": 3,
+        "std_population": 0.03921282472400702,
+        "values": [
+          9.018368911743163,
+          9.104292678833009,
+          9.024152374267578
+        ]
+      },
+      "initial_rate_nll": {
+        "mean": 9.184447860717773,
+        "n": 3,
+        "std_population": 0.15684226071051754,
+        "values": [
+          9.125338172912597,
+          9.028857421875,
+          9.399147987365723
+        ]
+      },
+      "integrity": {
+        "full_beats_order_every_seed": true,
+        "full_beats_rate_every_seed": true,
+        "future_target_mode": "future_slice",
+        "labels_absent": true,
+        "three_seeds": true
+      },
+      "rows": [
+        {
+          "final_full_nll": 4.904651165008545,
+          "final_order_nll": 10.628295135498046,
+          "final_rate_nll": 6.561697006225586,
+          "initial_full_nll": 9.103235816955566,
+          "initial_order_nll": 9.018368911743163,
+          "initial_rate_nll": 9.125338172912597,
+          "seed": 6201
+        },
+        {
+          "final_full_nll": 4.90294885635376,
+          "final_order_nll": 11.123406982421875,
+          "final_rate_nll": 7.411485099792481,
+          "initial_full_nll": 8.966989707946777,
+          "initial_order_nll": 9.104292678833009,
+          "initial_rate_nll": 9.028857421875,
+          "seed": 6202
+        },
+        {
+          "final_full_nll": 4.927902698516846,
+          "final_order_nll": 11.355282211303711,
+          "final_rate_nll": 6.814631843566895,
+          "initial_full_nll": 9.37143154144287,
+          "initial_order_nll": 9.024152374267578,
+          "initial_rate_nll": 9.399147987365723,
+          "seed": 6203
+        }
+      ]
+    },
+    "M69": {
+      "integrity": {
+        "labels_absent_every_seed": true,
+        "learned_loss_better_every_seed": true,
+        "learned_margin_better_every_seed": true,
+        "targets_future_only_every_seed": true,
+        "three_paired_seeds": true
+      },
+      "learned_class_top1": {
+        "mean": 0.20000000298023224,
+        "n": 3,
+        "std_population": 0.0,
+        "values": [
+          0.20000000298023224,
+          0.20000000298023224,
+          0.20000000298023224
+        ]
+      },
+      "learned_paired_margin": {
+        "mean": 0.08871787786483765,
+        "n": 3,
+        "std_population": 0.005085360574026711,
+        "values": [
+          0.09354102611541748,
+          0.08168631792068481,
+          0.09092628955841064
+        ]
+      },
+      "learned_prediction_loss": {
+        "mean": 0.11026849100987117,
+        "n": 3,
+        "std_population": 0.010958519906096769,
+        "values": [
+          0.0995699092745781,
+          0.10590752959251404,
+          0.12532803416252136
+        ]
+      },
+      "random_class_top1": {
+        "mean": 0.13333333532015482,
+        "n": 3,
+        "std_population": 0.04714045278155064,
+        "values": [
+          0.20000000298023224,
+          0.10000000149011612,
+          0.10000000149011612
+        ]
+      },
+      "random_paired_margin": {
+        "mean": 0.03149372339248657,
+        "n": 3,
+        "std_population": 0.02783027295398344,
+        "values": [
+          0.07069659233093262,
+          0.008869469165802002,
+          0.014915108680725098
+        ]
+      },
+      "random_prediction_loss": {
+        "mean": 0.13970367113749185,
+        "n": 3,
+        "std_population": 0.017560901171260627,
+        "values": [
+          0.1161898821592331,
+          0.14453928172588348,
+          0.158381849527359
+        ]
+      },
+      "rows": [
+        {
+          "labels_used_in_training_loss": false,
+          "learned_class_top1": 0.20000000298023224,
+          "learned_paired_margin": 0.09354102611541748,
+          "learned_prediction_loss": 0.0995699092745781,
+          "random_class_top1": 0.20000000298023224,
+          "random_paired_margin": 0.07069659233093262,
+          "random_prediction_loss": 0.1161898821592331,
+          "seed": 6201,
+          "target_future_only": true
+        },
+        {
+          "labels_used_in_training_loss": false,
+          "learned_class_top1": 0.20000000298023224,
+          "learned_paired_margin": 0.08168631792068481,
+          "learned_prediction_loss": 0.10590752959251404,
+          "random_class_top1": 0.10000000149011612,
+          "random_paired_margin": 0.008869469165802002,
+          "random_prediction_loss": 0.14453928172588348,
+          "seed": 6202,
+          "target_future_only": true
+        },
+        {
+          "labels_used_in_training_loss": false,
+          "learned_class_top1": 0.20000000298023224,
+          "learned_paired_margin": 0.09092628955841064,
+          "learned_prediction_loss": 0.12532803416252136,
+          "random_class_top1": 0.10000000149011612,
+          "random_paired_margin": 0.014915108680725098,
+          "random_prediction_loss": 0.158381849527359,
+          "seed": 6203,
+          "target_future_only": true
+        }
+      ]
+    },
+    "M71": {
+      "ia_joint_top1": {
+        "mean": 0.46666667858759564,
+        "n": 3,
+        "std_population": 0.09428091258757604,
+        "values": [
+          0.6000000238418579,
+          0.4000000059604645,
+          0.4000000059604645
+        ]
+      },
+      "ia_shuffled_joint_top1": {
+        "mean": 0.06666666766007741,
+        "n": 3,
+        "std_population": 0.04714045278155064,
+        "values": [
+          0.10000000149011612,
+          0.0,
+          0.10000000149011612
+        ]
+      },
+      "ia_text_joint_top1": {
+        "mean": 0.4000000059604645,
+        "n": 3,
+        "std_population": 0.08164965322607373,
+        "values": [
+          0.4000000059604645,
+          0.5,
+          0.30000001192092896
+        ]
+      },
+      "integrity": {
+        "ia_composition_better_every_seed": true,
+        "labels_absent_every_seed": true,
+        "observable_segment_targets_every_seed": true,
+        "ocr_absent_every_seed": true,
+        "text_composition_not_established": true,
+        "three_seeds": true
+      },
+      "rows": [
+        {
+          "ia_joint_top1": 0.6000000238418579,
+          "ia_shuffled_joint_top1": 0.10000000149011612,
+          "ia_text_joint_top1": 0.4000000059604645,
+          "labels_used_in_training_loss": false,
+          "ocr_tensors_used": false,
+          "seed": 6201,
+          "targets_from_observable_segments": true,
+          "text_joint_top1": 0.4000000059604645,
+          "text_shuffled_joint_top1": 0.30000001192092896
+        },
+        {
+          "ia_joint_top1": 0.4000000059604645,
+          "ia_shuffled_joint_top1": 0.0,
+          "ia_text_joint_top1": 0.5,
+          "labels_used_in_training_loss": false,
+          "ocr_tensors_used": false,
+          "seed": 6202,
+          "targets_from_observable_segments": true,
+          "text_joint_top1": 0.5,
+          "text_shuffled_joint_top1": 0.5
+        },
+        {
+          "ia_joint_top1": 0.4000000059604645,
+          "ia_shuffled_joint_top1": 0.10000000149011612,
+          "ia_text_joint_top1": 0.30000001192092896,
+          "labels_used_in_training_loss": false,
+          "ocr_tensors_used": false,
+          "seed": 6203,
+          "targets_from_observable_segments": true,
+          "text_joint_top1": 0.4000000059604645,
+          "text_shuffled_joint_top1": 0.6000000238418579
+        }
+      ],
+      "text_joint_top1": {
+        "mean": 0.4333333373069763,
+        "n": 3,
+        "std_population": 0.04714044926931327,
+        "values": [
+          0.4000000059604645,
+          0.5,
+          0.4000000059604645
+        ]
+      },
+      "text_shuffled_joint_top1": {
+        "mean": 0.46666667858759564,
+        "n": 3,
+        "std_population": 0.12472191607846732,
+        "values": [
+          0.30000001192092896,
+          0.5,
+          0.6000000238418579
+        ]
+      }
+    },
+    "formation": {
+      "action_mse_improvement": {
+        "ci95": [
+          0.14035724329086433,
+          0.20043386910767905
+        ],
+        "draws": 20000,
+        "mean": 0.1709561687693975,
+        "seed": 43310,
+        "values": [
+          0.15676779386817885,
+          0.1173343465822475,
+          0.22631861561620525,
+          0.16134470494095576,
+          0.19301538283940023
+        ]
+      },
+      "binding_r1_change": {
+        "ci95": [
+          0.0018750011920928955,
+          0.03437500223517418
+        ],
+        "draws": 20000,
+        "mean": 0.018125001713633536,
+        "seed": 43313,
+        "values": [
+          0.04062500223517418,
+          0.0156250037252903,
+          0.03750000149011612,
+          0.0031250007450580597,
+          -0.00624999962747097
+        ]
+      },
+      "decision": "M433_MULTI_SEED_JOINT_INTEGRATION_QUALIFIED",
+      "integrity": {
+        "all_original_gates_pass": true,
+        "five_model_seeds": true
+      },
+      "model_seeds": [
+        42401,
+        42402,
+        42403,
+        42404,
+        42405
+      ],
+      "next_slice_improvement": {
+        "ci95": [
+          0.006811473812990498,
+          0.008259035274476578
+        ],
+        "draws": 20000,
+        "mean": 0.007535254543733538,
+        "seed": 43311,
+        "values": [
+          0.008643345494138477,
+          0.006862416942438387,
+          0.007069859871413731,
+          0.006631337654330993,
+          0.008469312756346103
+        ]
+      },
+      "semantic_accuracy_change": {
+        "ci95": [
+          0.012166666666666676,
+          0.024392857142857126
+        ],
+        "draws": 20000,
+        "mean": 0.01795238095238095,
+        "seed": 43312,
+        "values": [
+          0.008511904761904776,
+          0.02922619047619046,
+          0.017142857142857126,
+          0.018154761904761924,
+          0.01672619047619045
+        ]
+      }
+    }
+  },
+  "experiment": "SpikeWorld V3 bounded next-event evidence rebuild",
+  "gates": {
+    "M60_rebuild_valid": true,
+    "M69_rebuild_valid": true,
+    "M71_bounded_rebuild_valid": true,
+    "formation_rebuild_valid": true
+  },
+  "passed": true,
+  "scope": "historical raw-artifact reconstruction; no new training",
+  "source_manifest": [
+    {
+      "bytes": 34166,
+      "path": "research\\outputs\\retinal_trimodal_m60c_transition_prepost_controlnll_full_6201_results.json",
+      "sha256": "12e383582221ca470a34760eb10dde6f61546996efa85a53cee907770561b002"
+    },
+    {
+      "bytes": 34150,
+      "path": "research\\outputs\\retinal_trimodal_m60c_transition_prepost_controlnll_full_6202_results.json",
+      "sha256": "5d227b701c831961d35a600bb2d016a486f233036094d02eb0f883724b1f78d2"
+    },
+    {
+      "bytes": 34199,
+      "path": "research\\outputs\\retinal_trimodal_m60c_transition_prepost_controlnll_full_6203_results.json",
+      "sha256": "b2f65d9b766ca13cbf0f8276a2de32b4f7c19635d807300812d43083f4632974"
+    },
+    {
+      "bytes": 27886,
+      "path": "research\\outputs\\retinal_multiview_object_future_m69_full_6201_results.json",
+      "sha256": "7247d92cc4248a72c21447caa764c14234860c6ebd62035161d5aed8f3036a0e"
+    },
+    {
+      "bytes": 27840,
+      "path": "research\\outputs\\retinal_multiview_object_future_m69_full_6202_results.json",
+      "sha256": "48c4a0bf84ea9ad84d5e06c44ba3d02e2fd789835078d93be1a412bc6f7372df"
+    },
+    {
+      "bytes": 27909,
+      "path": "research\\outputs\\retinal_multiview_object_future_m69_full_6203_results.json",
+      "sha256": "c01b1f5d35ab722f860a2ca47d32efc4bcd419ae32a9d5a894a269734109e7a1"
+    },
+    {
+      "bytes": 27939,
+      "path": "research\\outputs\\retinal_multiview_object_future_m69_randomencoder_6201_results.json",
+      "sha256": "2515b043788080dfb4075a4c92fb45d34150b97ae663349045a6b5352d250284"
+    },
+    {
+      "bytes": 27888,
+      "path": "research\\outputs\\retinal_multiview_object_future_m69_randomencoder_6202_results.json",
+      "sha256": "304290c30b476d1eded6e8b0a10cc823e95a8e1b292dda000b973bee9869695b"
+    },
+    {
+      "bytes": 27959,
+      "path": "research\\outputs\\retinal_multiview_object_future_m69_randomencoder_6203_results.json",
+      "sha256": "ad7b3cba698ad5476c26c2deaec2c051b302281294cded780483f7814a8d62b4"
+    },
+    {
+      "bytes": 43909,
+      "path": "research\\outputs\\retinal_compositional_future_m71c_evalfix_6201_results.json",
+      "sha256": "d697c89fc87ef266e671803de9cf537728f50c626a007d6dfbddbeb57ac92ad8"
+    },
+    {
+      "bytes": 43674,
+      "path": "research\\outputs\\retinal_compositional_future_m71c_evalfix_6202_results.json",
+      "sha256": "9e888d37ea4668c1e9e23aca22dfff4edc9ec917c5b0534e406a27c6cdca92b0"
+    },
+    {
+      "bytes": 43919,
+      "path": "research\\outputs\\retinal_compositional_future_m71c_evalfix_6203_results.json",
+      "sha256": "fb82be41ecda2bdb23e6a2a57624d3a99bd47d14169b30e24da047da7edfca4e"
+    },
+    {
+      "bytes": 97798,
+      "path": "SNN_autoresearch\\spikeworld_iclr2027_v2\\evidence\\spikeworld_m433_multi_seed_joint_integration.json",
+      "sha256": "c7fa95bd0be6f1817c9b93ee818d7c4678ea9ebf00b1f7e8f88e858926b768d6"
+    }
+  ]
+}

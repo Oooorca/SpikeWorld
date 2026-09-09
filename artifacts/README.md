@@ -1,5 +1,11 @@
 # Artifact contract
 
+This contract describes the legacy reference runners and representative checkpoint.
+For the current manuscript evidence and full-run availability, see
+[`../REPRODUCIBILITY.md`](../REPRODUCIBILITY.md). The current total mutable numeric
+budget is 28,848 B including routing history, rather than the legacy tensor-only
+24,384 B count.
+
 ## Public with this release
 
 - `shifts/`: 20 causal online streams, an online manifest, and a distinct

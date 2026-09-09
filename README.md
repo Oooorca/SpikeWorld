@@ -1,131 +1,92 @@
 # SpikeWorld
 
-Reference code for the experiments in **SpikeWorld: Fast-State Adaptation for
-Frozen Spiking World Models**.
+**Adapting Frozen World Models with Compact State**
 
-SpikeWorld uses one sparse spiking Transformer to learn next-slice prediction,
-multimodal semantics, image--text binding, and action-conditioned dynamics. At
-deployment, the trained network is frozen. Only a 24,384-byte external state is
-updated from the observed next-state prediction error.
+SpikeWorld retains a pretrained predictive–semantic model and writes deployment
+feedback into compact external state. In the paper's registered six-stage stream,
+**28.8 KB obtains 19.28% prediction gain**, versus 21.85% for prediction-path tuning
+with 1.93 MB of mutable numeric state.
 
-![SpikeWorld overview](images/spikeworld-hero-causal-fast-state-v3.png)
+[Paper](paper/SpikeWorld.pdf) · [Architecture](paper/fig1_spikeworld_causal_fast_state.pdf)
+· [Memory–prediction comparison](paper/fig2_deployment_pareto.pdf)
+· [Reproduction guide](REPRODUCIBILITY.md)
 
-## What is included
+## Predict, observe, then adapt
 
-| Command | Experiment | Purpose |
-|---|---|---|
-| `spikeworld-joint` | Joint Multimodal–Action Training | Five-seed shared-core optimization |
-| `spikeworld-adapt` | Registered-Shift Adaptation | Prequential shear/attenuation adaptation |
-| `spikeworld-control` | Closed-Loop Control | Live Meta-World comparison |
-| `spikeworld-audit` | Deployment Audit | Parameter, state-size, sparsity, and input audit |
-| `spikeworld-verify` | Result provenance | Rebuild and check every compact paper number |
-| `spikeworld-fetch` | Artifact retrieval | Download and hash-check the public checkpoint |
+The frozen sparse spiking model shares temporal computation across sensory and
+action streams. Residual matrices improve endpoint predictions; a separate
+132-byte score state selects registered action corrections. Outcomes are scored
+before updates. Four observed transitions precede the first possible action
+correction at decision five.
 
-The source tree contains the final architecture, adaptation rule, experiment
-entrypoints, configurations, tests, causal shift streams, and the four raw JSON
-outputs from which the paper tables are rebuilt. Exploratory variants and
-caches are intentionally excluded.
+| Registered-stream method | Prediction gain | Mutable numeric state |
+|---|---:|---:|
+| External state | 19.28% | 28,848 B |
+| Prediction-path tuning | 21.85% | 1,932,488 B |
+| Adapter | 15.61% | 135,232 B |
+| Replay | 20.38% | 2,693,128 B |
 
-## Install
+Means use three independently trained foundations, each with three action seeds.
+Bytes count persistent mutable numeric state, not the frozen model, transient
+activations, or total device/process memory.
 
-Python 3.10 or newer and [uv](https://docs.astral.sh/uv/) are required for the
-locked environment.
+## Start here
+
+Use Python **3.11**. Check the current main comparison without ML dependencies:
+
+```bash
+python tools/verify_current.py
+```
+
+This hash-checks current evidence and reconstructs main-stream prediction,
+tracking, return correction, byte counts, and update medians from transition
+records and per-run accounting. It does not launch training.
+
+For model and deployment-interface checks:
 
 ```bash
 uv sync --locked --extra train --extra dev
-```
-
-Install the optional simulator stack only for the live control experiment:
-
-```bash
-uv sync --locked --extra control
-```
-
-## Quick checks
-
-These checks need no external artifacts:
-
-```bash
 uv run pytest -q
 uv run spikeworld-verify
 ```
 
-They verify the exact model size (`1,451,388` parameters), the exact fast-state
-budget (`24,384` bytes), causal sparse-attention accounting, the online input
-boundary, same-input semantic-logit invariance, decision-5 causal timing, and
-raw-output reconstruction of the paper summary.
+The last command verifies the preserved **legacy** snapshot. Current V5 results
+are under `results/current/`; legacy `results/raw/` and `results/paper_results.json`
+have not been overwritten.
 
-## Artifacts
+## Runtime state
 
-The registered-shift streams and their separately held audit manifest are
-versioned under `artifacts/shifts/`. Download the representative paper
-checkpoint from the immutable GitHub release with:
+`PersistentFastState.accounting()` retains its historical meaning: the 24,384 B
+allocated tensor block. `runtime_accounting()` also measures the routing prefix:
+four 247-value signatures and four 32-value loss vectors require 4,464 B, giving
+**28,848 B peak persistent numeric state**. Prefixes are cleared after routing.
+Tests cover all four router outcomes, score accumulation, reset, and causal timing.
 
-```bash
-uv run spikeworld-fetch
-```
+## Experiment entry points
 
-The downloader verifies SHA-256
-`6513bc37d9cd3a5a91dedb478ccd54ce87850e6cd06cb1f3fb9437767dece1ff`
-before installing the file. The complete artifact boundary is documented in
-[artifacts/README.md](artifacts/README.md).
+| Command | Purpose |
+|---|---|
+| `spikeworld-joint` | Shared-core multimodal/action optimization |
+| `spikeworld-adapt` | Registered-shift prequential evaluation |
+| `spikeworld-control` | Live paired Meta-World control |
+| `spikeworld-audit` | Model, state, sparsity, and input audit |
+| `spikeworld-fetch` | Hash-checked representative legacy checkpoint download |
 
-## Reproduce
+Read [artifact requirements](artifacts/README.md) and [protocol mapping](REPRODUCIBILITY.md)
+before full experiments. These are reference runners, not a turnkey rerun of every
+later manuscript experiment.
 
-Run commands from the repository root. Paths and hyperparameters are ordinary
-TOML files and can be changed without editing source code.
+## Evidence map
 
-```bash
-# Joint training (a two-update pipeline check is available with --smoke)
-spikeworld-joint --config configs/joint.toml --smoke
-spikeworld-joint --config configs/joint.toml
+`results/current/` contains the main stream, routed actuator RLS, causal closure,
+component attribution, closed-loop control, joint formation, formation pilot, and
+controlled event-probe records. Every exported JSON retains all numerical fields
+and gates; machine-specific paths are anonymized. The manifest records original
+and exported hashes.
 
-# Offline prequential evaluation; audit labels are opened only after updates
-spikeworld-adapt --config configs/adaptation.toml
+`results/current/additional_protocol/` retains the later **separate one-foundation**
+direct-output NLMS/RLS comparison. It is not pooled with the main stream or plotted
+on its frontier. See the reproduction guide for protocol boundaries.
 
-# Live paired control; --smoke uses one model, task, and environment seed
-spikeworld-control --config configs/control.toml --smoke
-spikeworld-control --config configs/control.toml
-
-# Static deployment audit
-spikeworld-audit --config configs/audit.toml
-```
-
-The online update API accepts only `state`, `action`, `task`, and `endpoint`.
-It rejects labels, teacher outputs, rewards, success flags, and true mechanism
-parameters. Reward and success are read by the control runner only after the
-transition and are used only for reporting.
-
-## Paper-result snapshot
-
-The locked experiments report:
-
-| Result | Value |
-|---|---:|
-| Joint-training action MSE improvement | 17.10% |
-| Joint-training semantic accuracy change | +1.80 pp |
-| Shear prediction / action improvement | 5.48% / 24.20% |
-| Attenuation prediction / action improvement | 30.01% / 3.94% |
-| Frozen to fast-state reward | 414.68 to 422.58 |
-| Frozen to fast-state success | 53.33% to 66.67% |
-| Sparse QK reduction | 77.34% |
-
-The full-precision values are in
-[`results/paper_results.json`](results/paper_results.json). Unlike a hard-coded
-snapshot check, `spikeworld-verify` derives this file from the archived outputs
-in `results/raw/`. To rewrite the JSON and the human-readable tables:
-
-```bash
-uv run spikeworld-verify --write
-```
-
-## Scope
-
-The released experiments cover registered shear and attenuation families. They
-do not establish unrestricted continual learning, discovery of arbitrary
-unknown mechanisms, superiority to linear system identification, or measured
-neuromorphic-chip energy savings. In the linear attenuation control condition,
-RLS has the highest non-oracle mean reward. The public representative checkpoint
-and causal shift streams support integrity and interface checks; a full
-five-seed retraining run still requires the upstream sensory and action-fitting
-datasets listed in the artifact contract.
+No new experimental results were generated in this release. The linked paper is
+the title-only V5 revision of V4. Legacy code and snapshots remain in Git history.

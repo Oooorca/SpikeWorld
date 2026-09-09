@@ -31,7 +31,9 @@ def fetch(destination: str | Path, force: bool = False) -> Path:
             return target
         raise ValueError(f"existing file has the wrong SHA-256: {target}")
     target.parent.mkdir(parents=True, exist_ok=True)
-    descriptor, temporary_name = tempfile.mkstemp(prefix="spikeworld-", suffix=".pt")
+    descriptor, temporary_name = tempfile.mkstemp(
+        prefix="spikeworld-", suffix=".pt", dir=target.parent
+    )
     os.close(descriptor)
     temporary = Path(temporary_name)
     try:

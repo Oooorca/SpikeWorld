@@ -1,0 +1,27 @@
+{
+  "finding": "CONFIRMED_SOURCE_CALIBRATION_PREFIX_REUSE",
+  "replicas": [
+    {
+      "replica": 0,
+      "source_episodes": 12,
+      "exact_reused_prefix_rows": 48,
+      "all_source_rows": 174
+    },
+    {
+      "replica": 1,
+      "source_episodes": 12,
+      "exact_reused_prefix_rows": 48,
+      "all_source_rows": 174
+    },
+    {
+      "replica": 2,
+      "source_episodes": 12,
+      "exact_reused_prefix_rows": 48,
+      "all_source_rows": 174
+    }
+  ],
+  "scope": "main Pareto, routed-RLS stress test, and V4 pilot share this build_stream/build_router source protocol",
+  "consequence": "Source-return zero correction is calibrated-source reentry, not held-out source generalization.",
+  "unchanged": "Recorded shifted prediction gains and numerical state costs are unchanged.",
+  "shift_scope": "This audit does not establish shifted-example disjointness; shifted replay and calibration use separately named archives."
+}

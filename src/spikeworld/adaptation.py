@@ -162,9 +162,12 @@ class PersistentFastState(nn.Module):
         self.write_count = 0
         self._episode_signatures: list[torch.Tensor] = []
         self._pending_losses: list[torch.Tensor] = []
+        self._route_locked = False
+        self._peak_prefix_bytes = 0
 
     def start_episode(self) -> None:
         self.route = "source"
+        self._route_locked = False
         self._episode_signatures.clear()
         self._pending_losses.clear()
 
@@ -234,21 +237,29 @@ class PersistentFastState(nn.Module):
             self.families,
             self.values,
         )
-        self._episode_signatures.append(signature.detach())
-        self._pending_losses.append(losses.detach())
         just_routed = False
         with torch.no_grad():
-            if len(self._episode_signatures) == self.config.router_observations:
-                evidence = torch.stack(self._episode_signatures).mean(0, keepdim=True)
-                self.route = ROUTES[int(router(evidence).argmax(1))]
-                just_routed = True
+            if not self._route_locked:
+                self._episode_signatures.append(signature.detach())
+                self._pending_losses.append(losses.detach())
+                self._peak_prefix_bytes = max(
+                    self._peak_prefix_bytes, self.prefix_bytes()
+                )
+                if len(self._episode_signatures) == self.config.router_observations:
+                    evidence = torch.stack(self._episode_signatures).mean(0, keepdim=True)
+                    self.route = ROUTES[int(router(evidence).argmax(1))]
+                    self._route_locked = True
+                    just_routed = True
             if self.route in {"shear", "attenuation"}:
                 if just_routed:
                     self.scores.add_(torch.stack(self._pending_losses).sum(0))
                     self.count.add_(len(self._pending_losses))
-                elif len(self._episode_signatures) > self.config.router_observations:
+                elif self._route_locked:
                     self.scores.add_(losses)
                     self.count.add_(1.0)
+            if just_routed:
+                self._episode_signatures.clear()
+                self._pending_losses.clear()
 
         wrote = False
         loss_value = None
@@ -277,8 +288,25 @@ class PersistentFastState(nn.Module):
         }
 
     def accounting(self) -> dict[str, int]:
+        """Persistent tensor block only (legacy API); excludes the routing prefix."""
         values = sum(parameter.numel() for parameter in self.parameters())
         return {"mutable_values": values, "mutable_bytes": values * 4}
+
+    def prefix_bytes(self) -> int:
+        return sum(
+            item.numel() * item.element_size()
+            for item in self._episode_signatures + self._pending_losses
+        )
+
+    def runtime_accounting(self) -> dict[str, int]:
+        """Persistent FP32 numeric state, not transient activations or process RAM."""
+        block = self.accounting()["mutable_bytes"]
+        return {
+            "allocated_tensor_bytes": block,
+            "current_prefix_bytes": self.prefix_bytes(),
+            "peak_prefix_bytes": self._peak_prefix_bytes,
+            "peak_mutable_numeric_bytes": block + self._peak_prefix_bytes,
+        }
 
 
 def validate_online_batch(batch: dict[str, torch.Tensor]) -> None:

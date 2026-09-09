@@ -1,0 +1,308 @@
+{
+  "title": "SpikeWorld: Adapting Frozen World Models with Compact State",
+  "manuscript_sha256": "d63dc181e5b4957475c22ee67aa0458456cc84985ec884f33b830976195b43de",
+  "transformation": "JSON reserialization and local-machine path anonymization only; numbers, gates, and comparison arms retained.",
+  "files": [
+    {
+      "file": "deployment_pareto.json",
+      "bytes": 5846267,
+      "sha256": "1ca8a317c25b61c4cf348abdc9c45f7dd55cdd4b0fbd587118f27a4c276189ba",
+      "original_sha256": "942b51e0121e626146bab4fff74503405ecde8f73fe272b002ac20d0615642a0",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "routed_matrix_rls.json",
+      "bytes": 3802115,
+      "sha256": "52a74403b73d050856e0c4aaf2600c32c432f13f62816c7cf8ebb9dc59e704b6",
+      "original_sha256": "6b02e6c12caa1f3d6c36a2b33777a6d2a05a606f2776540b935b541a3b5e8551",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "causal_closure.json",
+      "bytes": 1312647,
+      "sha256": "55fe8bd85a4f8c8db02091da42f70722896fca8f4692feeb761fd024c88b2c84",
+      "original_sha256": "61806ce32d606fc0ac4f4e4f5226fe3ecf6a13aa62c1ec607f389a9b08c46170",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "component_ablation.json",
+      "bytes": 6649,
+      "sha256": "308c882a3774b0cf375b5477c47a8e6547e8b95cdc3a7b33e23d6eff3b63da40",
+      "original_sha256": "308c882a3774b0cf375b5477c47a8e6547e8b95cdc3a7b33e23d6eff3b63da40",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "closed_loop_control.json",
+      "bytes": 2429425,
+      "sha256": "7275b90fb5d4619e93ca326ca01ff040b298a0d4799c434a92ff1a1cdadcb0ba",
+      "original_sha256": "2d9183a93fc39aebbe853975e9ca410c7bada0b711155bde5e240e85edd12083",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "joint_training.json",
+      "bytes": 97773,
+      "sha256": "4e175e83200752d6f0e889eae54b4a3c421afc02f611c495864b1225794159c1",
+      "original_sha256": "c7fa95bd0be6f1817c9b93ee818d7c4678ea9ebf00b1f7e8f88e858926b768d6",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "formation_bridge.json",
+      "bytes": 2663,
+      "sha256": "cc1c9b8ddd891a5d698ee57d8b98ff8ac04f2ca5aadd52d7257518e1dca59fb6",
+      "original_sha256": "6637a562814fcae3cce153e6798acb2d01d52d67e5c7b7cc6becf6a4796b7c65",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "source_reuse.json",
+      "bytes": 936,
+      "sha256": "15fe79f286c3e286bfd0830e399540bec3b31026623ec2f076318f5f5a43a148",
+      "original_sha256": "7aac9fcf7d9019fabfefa0879c9569915b003f514421a6d3e28c6e4d0b709b4f",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "formation_probes.json",
+      "bytes": 14464,
+      "sha256": "42beb10d00d3b9e3b6fbad34296b121fa9c768e236ab08e66cf3ab91200af574",
+      "original_sha256": "f36f73c3f5fc16f1f8e73046b3aae286b1058676cf170aa7d8c9cb1f5b82f159",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "probe_records/retinal_trimodal_m60c_transition_prepost_controlnll_full_6201_results.json",
+      "bytes": 34167,
+      "sha256": "932e54fc4e774e55743682cbb5dc870e181f4df13b32a7cebb78206ac6361059",
+      "original_sha256": "12e383582221ca470a34760eb10dde6f61546996efa85a53cee907770561b002",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "probe_records/retinal_trimodal_m60c_transition_prepost_controlnll_full_6202_results.json",
+      "bytes": 34151,
+      "sha256": "a634ab39fe28a6d4dad41f20be16d16cb25b2733751222d5a390d8963b2f28be",
+      "original_sha256": "5d227b701c831961d35a600bb2d016a486f233036094d02eb0f883724b1f78d2",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "probe_records/retinal_trimodal_m60c_transition_prepost_controlnll_full_6203_results.json",
+      "bytes": 34200,
+      "sha256": "fac144e18a0f16f4a673a7b4af8cf161b65d3d259f772a51f74b8f176108f264",
+      "original_sha256": "b2f65d9b766ca13cbf0f8276a2de32b4f7c19635d807300812d43083f4632974",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "probe_records/retinal_multiview_object_future_m69_full_6201_results.json",
+      "bytes": 27887,
+      "sha256": "a6ab6f7e7fdd8452be4bbdd99c7173daf558e514f4e00e62e2e2f8dc16516ee2",
+      "original_sha256": "7247d92cc4248a72c21447caa764c14234860c6ebd62035161d5aed8f3036a0e",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "probe_records/retinal_multiview_object_future_m69_full_6202_results.json",
+      "bytes": 27841,
+      "sha256": "ba9a6b1ae6533f3b9b9c7197ff4dfe14b8e4ac9bdde76fcd8b6547b11e1028be",
+      "original_sha256": "48c4a0bf84ea9ad84d5e06c44ba3d02e2fd789835078d93be1a412bc6f7372df",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "probe_records/retinal_multiview_object_future_m69_full_6203_results.json",
+      "bytes": 27910,
+      "sha256": "75db9992493188c54ca42c478ed4e6ca9bc65cc294e32d3f8c3dc1f626691c8f",
+      "original_sha256": "c01b1f5d35ab722f860a2ca47d32efc4bcd419ae32a9d5a894a269734109e7a1",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "probe_records/retinal_multiview_object_future_m69_randomencoder_6201_results.json",
+      "bytes": 27940,
+      "sha256": "cc9fdcc7266778363a22b87501c85cc5de291cde777ebf04ac90b534883f26ae",
+      "original_sha256": "2515b043788080dfb4075a4c92fb45d34150b97ae663349045a6b5352d250284",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "probe_records/retinal_multiview_object_future_m69_randomencoder_6202_results.json",
+      "bytes": 27889,
+      "sha256": "92eed27e13ed1239e8e59841868b8a62991f06a80d3fca56a48583c4e11fafed",
+      "original_sha256": "304290c30b476d1eded6e8b0a10cc823e95a8e1b292dda000b973bee9869695b",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "probe_records/retinal_multiview_object_future_m69_randomencoder_6203_results.json",
+      "bytes": 27960,
+      "sha256": "cfc4c97329431de1f3c09c3d2f9c16722e38b0c7f205d8e27fddd74492cb197c",
+      "original_sha256": "ad7b3cba698ad5476c26c2deaec2c051b302281294cded780483f7814a8d62b4",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "probe_records/retinal_compositional_future_m71c_evalfix_6201_results.json",
+      "bytes": 43910,
+      "sha256": "7358a393471194d34de915f4f04e71b16a207455be2c223527aee6458c32097b",
+      "original_sha256": "d697c89fc87ef266e671803de9cf537728f50c626a007d6dfbddbeb57ac92ad8",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "probe_records/retinal_compositional_future_m71c_evalfix_6202_results.json",
+      "bytes": 43675,
+      "sha256": "6b9f44669074cc606558a7ae19ce6093ecb71d9a9349ca22dc3e4b539fbf154d",
+      "original_sha256": "9e888d37ea4668c1e9e23aca22dfff4edc9ec917c5b0534e406a27c6cdca92b0",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "probe_records/retinal_compositional_future_m71c_evalfix_6203_results.json",
+      "bytes": 43920,
+      "sha256": "e207c419fcecabcc81d47034c67cb60168f7684441aa6414fc67a1e1fff7b227",
+      "original_sha256": "fb82be41ecda2bdb23e6a2a57624d3a99bd47d14169b30e24da047da7edfca4e",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "probe_records/spikeworld_m433_multi_seed_joint_integration.json",
+      "bytes": 97773,
+      "sha256": "4e175e83200752d6f0e889eae54b4a3c421afc02f611c495864b1225794159c1",
+      "original_sha256": "c7fa95bd0be6f1817c9b93ee818d7c4678ea9ebf00b1f7e8f88e858926b768d6",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/summary.json",
+      "bytes": 833,
+      "sha256": "1870a5dbdf9fa8aecb22086826b0927e1c4a609a0020c0105a21911dd37b7056",
+      "original_sha256": "3238f74986a7269c3d726762a2deeb0f25ef6ce54b8ee3a59e37b59620f2494e",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/frozen_reference_42711_r0.json",
+      "bytes": 2243084,
+      "sha256": "5aa654b07d53ae7e5780ecd694f31e70610c8caa424c82a553d92fe74fb506cc",
+      "original_sha256": "d34b30bc934cf2582e69d373d7eb9b6ac3012d35011555e3276616f3206e1954",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/frozen_reference_42711_r1.json",
+      "bytes": 2244674,
+      "sha256": "03aad0aaeb7c701bc8577bd5b04d703abcb71fc02aaf5e76b059700736c00e33",
+      "original_sha256": "690b13230dcf5e027859616509ddfbfbc5dfa863bbf97bd34c91007c5304ecde",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/frozen_reference_42712_r0.json",
+      "bytes": 2245601,
+      "sha256": "60d4446786f71c5459a7a3682905ffc57a653f4ac6ffc792bdd1fcc4b4b4d809",
+      "original_sha256": "d9a01db5fc005e4b8ccb0dbb2434bbe7d14d047d581acf7c0cb35f05a64ee972",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/frozen_reference_42712_r1.json",
+      "bytes": 2247867,
+      "sha256": "537ca5568829f0807c7bdaae7510eab30110a6ca2f4bb9ac859d7c73a8b22d6d",
+      "original_sha256": "dd4e8de86c891a2487f607f7697ea31643ce79ee6a24b19444ec6d50fb53e61e",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/lora_head_42711_r0.json",
+      "bytes": 517203,
+      "sha256": "1e5269f4f878cd04ae50d7d1d6f059870e7034563b624db693daa55134547db0",
+      "original_sha256": "a8852aadc51c395952fec6e63604be114d41e1ec211fa61e03442f7820fdb261",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/lora_head_42711_r1.json",
+      "bytes": 517624,
+      "sha256": "e9ebd8c60a1cda5fecbcc15bf0e9bb1c24aeac061d8150b7c4cdfd57d1da54df",
+      "original_sha256": "f0eb0218fc274921c8e9d9a887c38c1f243e98d8a57c0c279e274ad54e13751e",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/lora_head_42712_r0.json",
+      "bytes": 517688,
+      "sha256": "d35df49b9a47cb960dc8c40182e1908c45567610599a32e65c3e108831c71e19",
+      "original_sha256": "2da86dd289c34044d3a64fa07a7e05d10db9985b36e22cf405d1b3f24d87539d",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/lora_head_42712_r1.json",
+      "bytes": 518049,
+      "sha256": "7802dfb6b1e077c39484306b6a5b1797afe9712ba66151db39b96abc3cfcb2d0",
+      "original_sha256": "b2cdb025044f9dd5bae41bf479bbf20c3de786b39dcc9a07a2334874ab730ae3",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/output_nlms_42711_r0.json",
+      "bytes": 522790,
+      "sha256": "d3d9fe3a139f3b6c58902cb3dfe539018ade7ee9249df4369974a4dfbd61f695",
+      "original_sha256": "d9705a315888fdae4f2c164e10ef5a6ed53a08ac9e12bcafc6a4dfda66007818",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/output_nlms_42711_r1.json",
+      "bytes": 523830,
+      "sha256": "f3f9eb7b1e48afedf6c298f7b1c846846050e7afff17e62907206bfb27301da3",
+      "original_sha256": "a4f7a3553fe7c5198b7c3574d7e6f9aea103b4dbd75fcae1bb89d2836de3b7b4",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/output_nlms_42712_r0.json",
+      "bytes": 523243,
+      "sha256": "9d9c93feaddb912d0637445049286a3e2e27bd3bf6095be4d83555e0a0f03f93",
+      "original_sha256": "d4ab9313331023b3be79b8d65fc9e8549b653ae2039f9ba7ea6a80716f8a08c8",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/output_nlms_42712_r1.json",
+      "bytes": 525042,
+      "sha256": "3b094068dd76a461139f470f0f7ff3401b505577ad02bf91175f4833c1111574",
+      "original_sha256": "13fa4ad993fb184579a25e15e6a4920912277d8b9091de083259a8f6b45ae9f5",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/output_rls_42711_r0.json",
+      "bytes": 522900,
+      "sha256": "01575f7fbb0caeeb8f881c9aac1a0c50c057db573b9a946bce609527c96b6e17",
+      "original_sha256": "529de5ec5c99f2cfc02a52f695e6c5f840ba417da56737a0c7256974804c51fc",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/output_rls_42711_r1.json",
+      "bytes": 523658,
+      "sha256": "d585723b1eeae6cc5ba6ce27119ad877fceffeb284f8dc0c2c8befa8094a9418",
+      "original_sha256": "8bdd1c4f2e69e882da962cac5cd8f50669820bcb83e7ecf1a7cb0472738f06d7",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/output_rls_42712_r0.json",
+      "bytes": 523215,
+      "sha256": "4b71ca198ae7a599a13b529bb92beae7fe45519aa767b4b8d7b02c8680c1fa67",
+      "original_sha256": "4bb190670300c60e932bfc2fd33b7a1da1a65ba4676424c93931c66776bada38",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/output_rls_42712_r1.json",
+      "bytes": 525166,
+      "sha256": "9a3394e3881f21a0fdc3ac21d8031744ca1cc92f6e044552d322fac25408629f",
+      "original_sha256": "f416aede536c8cea43f37f8ca85b4f009a57a59347c8e747a6a718706245928c",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/state_42711_r0.json",
+      "bytes": 518906,
+      "sha256": "b332ae67c2ebb32972ed4f86ee7f67da38ec954a1965aa4a015b35a0fc500c6d",
+      "original_sha256": "0a7a922476cb73bcc74f6ab2188804e3af14f1bce05ec2df5cef84bed113e862",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/state_42711_r1.json",
+      "bytes": 519281,
+      "sha256": "c4b05bddefedd8a271c5399f1819acd191406e55d4a773bfdb06287cf0eb1fdd",
+      "original_sha256": "138df305782a8b2c45c9fab84c105acba3217508dc35f2ac2be4ca4e9c2623cf",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/state_42712_r0.json",
+      "bytes": 519494,
+      "sha256": "9e74875b6ed22dd1d4fc188f3d11f32619e5a9a3813ef6e6afa57eec8fad97d4",
+      "original_sha256": "f21aa90436243073ff65b9c4ab980fd491528611d54b74a504f6bd082c18c637",
+      "numeric_fields_unchanged": true
+    },
+    {
+      "file": "additional_protocol/units/state_42712_r1.json",
+      "bytes": 520621,
+      "sha256": "de868e43acf447bb7f369b8b12bb0b1edd2d4ebed6a6f29546053105ff966efe",
+      "original_sha256": "05dd168e4c1c6e03c17bbf712e4ed92d8af7f029a8e0da0e51d6738659717bc6",
+      "numeric_fields_unchanged": true
+    }
+  ]
+}

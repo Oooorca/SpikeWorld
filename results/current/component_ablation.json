@@ -1,0 +1,274 @@
+{
+  "aggregate": {
+    "attenuation": {
+      "action_difference_max_abs": 0.0,
+      "candidate_only_action": {
+        "bootstrap_seed": 20260821,
+        "ci95": [
+          0.03804982897717531,
+          0.03967681327948704
+        ],
+        "cluster_means": [
+          0.03958227288946057,
+          0.03868197495631237,
+          0.0375251262910413,
+          0.038258458673740794,
+          0.04018111161141129
+        ],
+        "clusters": [
+          42401,
+          42402,
+          42403,
+          42404,
+          42405
+        ],
+        "draws": 20000,
+        "mean": 0.03884578888439326,
+        "unit": "model_seed"
+      },
+      "candidate_only_prediction": {
+        "bootstrap_seed": 20260821,
+        "ci95": [
+          0.06899523344116573,
+          0.08122960489818938
+        ],
+        "cluster_means": [
+          0.07101574814796972,
+          0.08314940229455889,
+          0.07247843807042455,
+          0.08368539091570229,
+          0.06523311641973234
+        ],
+        "clusters": [
+          42401,
+          42402,
+          42403,
+          42404,
+          42405
+        ],
+        "draws": 20000,
+        "mean": 0.07511241916967756,
+        "unit": "model_seed"
+      },
+      "full_state_action": {
+        "bootstrap_seed": 20260821,
+        "ci95": [
+          0.03804982897717531,
+          0.03967681327948704
+        ],
+        "cluster_means": [
+          0.03958227288946057,
+          0.03868197495631237,
+          0.0375251262910413,
+          0.038258458673740794,
+          0.04018111161141129
+        ],
+        "clusters": [
+          42401,
+          42402,
+          42403,
+          42404,
+          42405
+        ],
+        "draws": 20000,
+        "mean": 0.03884578888439326,
+        "unit": "model_seed"
+      },
+      "full_state_prediction": {
+        "bootstrap_seed": 20260821,
+        "ci95": [
+          0.3202827941401566,
+          0.33228142714548925
+        ],
+        "cluster_means": [
+          0.33179188011096267,
+          0.3181923514668217,
+          0.3179960302170159,
+          0.33439308408620666,
+          0.32903720733310765
+        ],
+        "clusters": [
+          42401,
+          42402,
+          42403,
+          42404,
+          42405
+        ],
+        "draws": 20000,
+        "mean": 0.3262821106428229,
+        "unit": "model_seed"
+      },
+      "no_inverse_action_improvement": 0.0,
+      "residual_matrix_prediction_contribution": {
+        "bootstrap_seed": 20260821,
+        "ci95": [
+          0.24228451432527454,
+          0.25997362778464816
+        ],
+        "cluster_means": [
+          0.260776131962993,
+          0.23504294917226282,
+          0.24551759214659136,
+          0.25070769317050434,
+          0.2638040909133753
+        ],
+        "clusters": [
+          42401,
+          42402,
+          42403,
+          42404,
+          42405
+        ],
+        "draws": 20000,
+        "mean": 0.2511696914731454,
+        "unit": "model_seed"
+      }
+    },
+    "shear": {
+      "action_difference_max_abs": 0.0,
+      "candidate_only_action": {
+        "bootstrap_seed": 20260821,
+        "ci95": [
+          0.41806465284401284,
+          0.4666211311130629
+        ],
+        "cluster_means": [
+          0.4504623037178958,
+          0.41009400292906717,
+          0.42592287532455264,
+          0.4908497829727838,
+          0.4221061915186885
+        ],
+        "clusters": [
+          42401,
+          42402,
+          42403,
+          42404,
+          42405
+        ],
+        "draws": 20000,
+        "mean": 0.43988703129259754,
+        "unit": "model_seed"
+      },
+      "candidate_only_prediction": {
+        "bootstrap_seed": 20260821,
+        "ci95": [
+          -0.01821994544362966,
+          -0.0004088612650758539
+        ],
+        "cluster_means": [
+          -0.014068933176505437,
+          -0.0209926423364395,
+          0.008697853342543868,
+          -0.01668639848355325,
+          -0.011435401725276554
+        ],
+        "clusters": [
+          42401,
+          42402,
+          42403,
+          42404,
+          42405
+        ],
+        "draws": 20000,
+        "mean": -0.010897104475846174,
+        "unit": "model_seed"
+      },
+      "full_state_action": {
+        "bootstrap_seed": 20260821,
+        "ci95": [
+          0.41806465284401284,
+          0.4666211311130629
+        ],
+        "cluster_means": [
+          0.4504623037178958,
+          0.41009400292906717,
+          0.42592287532455264,
+          0.4908497829727838,
+          0.4221061915186885
+        ],
+        "clusters": [
+          42401,
+          42402,
+          42403,
+          42404,
+          42405
+        ],
+        "draws": 20000,
+        "mean": 0.43988703129259754,
+        "unit": "model_seed"
+      },
+      "full_state_prediction": {
+        "bootstrap_seed": 20260821,
+        "ci95": [
+          0.0735587104369683,
+          0.08612256838572827
+        ],
+        "cluster_means": [
+          0.0660073039551069,
+          0.08510092566197576,
+          0.08488582015976039,
+          0.08765503247135704,
+          0.08269687394519883
+        ],
+        "clusters": [
+          42401,
+          42402,
+          42403,
+          42404,
+          42405
+        ],
+        "draws": 20000,
+        "mean": 0.08126919123867977,
+        "unit": "model_seed"
+      },
+      "no_inverse_action_improvement": 0.0,
+      "residual_matrix_prediction_contribution": {
+        "bootstrap_seed": 20260821,
+        "ci95": [
+          0.08133213671362662,
+          0.1030004547154253
+        ],
+        "cluster_means": [
+          0.08007623713161234,
+          0.10609356799841527,
+          0.07618796681721651,
+          0.1043414309549103,
+          0.09413227567047536
+        ],
+        "clusters": [
+          42401,
+          42402,
+          42403,
+          42404,
+          42405
+        ],
+        "draws": 20000,
+        "mean": 0.09216629571452595,
+        "unit": "model_seed"
+      }
+    }
+  },
+  "config": {
+    "candidate_only_effective_mutable_bytes": 132,
+    "candidate_only_effective_mutable_values": 33,
+    "full_state_mutable_bytes": 24384,
+    "full_state_mutable_values": 6096,
+    "model_seeds": [
+      42401,
+      42402,
+      42403,
+      42404,
+      42405
+    ],
+    "state_scope": "persistent_across_canonical_tasks_within_replica"
+  },
+  "failed_gates": [],
+  "gates": {
+    "attenuation_residual_matrix_prediction_ci_positive": true,
+    "candidate_only_action_exactly_matches_full": true,
+    "frozen_model_and_semantics_exact": true,
+    "shear_residual_matrix_prediction_ci_positive": true
+  },
+  "source_sha256": "cf50f20bcda4970ead244de5202746f8a9e67b0ff40418127d18e10292d4d32e"
+}

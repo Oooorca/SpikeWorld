@@ -1,0 +1,35 @@
+{
+  "summary": {
+    "state": {
+      "mse": 0.2640233104087649,
+      "gain": 0.2333969061614037,
+      "bytes": 28848,
+      "median_ms": 11.6975
+    },
+    "output_nlms": {
+      "mse": 0.16518846511774296,
+      "gain": 0.5169589572566231,
+      "bytes": 13956,
+      "median_ms": 11.0314
+    },
+    "output_rls": {
+      "mse": 0.1839287212887217,
+      "gain": 0.45844056038763914,
+      "bytes": 21156,
+      "median_ms": 11.1006
+    },
+    "lora_head": {
+      "mse": 0.2961204655058238,
+      "gain": 0.141403442063979,
+      "bytes": 30532,
+      "median_ms": 11.966899999999999
+    }
+  },
+  "dominators": [
+    "output_nlms",
+    "output_rls"
+  ],
+  "decision": "STOP_P1_DOMINATED",
+  "seconds": 96.61973118782043,
+  "scope": "development on one sensory foundation; factual prediction, not independent planning benefit"
+}
