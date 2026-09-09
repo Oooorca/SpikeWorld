@@ -1,6 +1,6 @@
 {
   "title": "SpikeWorld: Adapting Frozen World Models with Compact State",
-  "manuscript_sha256": "d63dc181e5b4957475c22ee67aa0458456cc84985ec884f33b830976195b43de",
+  "manuscript_sha256": "ed8259dae53522fb4ef74ccad53875756ab5d2f174eb6939fb15ddbfd5d00716",
   "transformation": "JSON reserialization and local-machine path anonymization only; numbers, gates, and comparison arms retained.",
   "files": [
     {
