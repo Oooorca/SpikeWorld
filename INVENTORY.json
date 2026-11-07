@@ -188,8 +188,8 @@
     },
     {
       "file": "paper/SpikeWorld.pdf",
-      "bytes": 604366,
-      "sha256": "a38f1a3af1842ed05bd06a56e671c5e5b29844769a78afd40d7c2d7b110ede1c"
+      "bytes": 606644,
+      "sha256": "c70a16f3e5dc05e20e3e9f82be35e9d4c60ba158196ee5ac460a5287c21e1e11"
     },
     {
       "file": "paper/fig1_spikeworld_causal_fast_state.pdf",
@@ -363,18 +363,18 @@
     },
     {
       "file": "paper/sections/2_predictive_model.tex",
-      "bytes": 7439,
-      "sha256": "75e973a51a2a14b2b21b24f6c6ea7417be6b26f75ab9a8f4f43bc498db2adb66"
+      "bytes": 8158,
+      "sha256": "43f154d5506550125ab0628f3cf5394121344295d51bc0bf430a46bfa463c88c"
     },
     {
       "file": "paper/sections/3_online_adaptation.tex",
-      "bytes": 6500,
-      "sha256": "21e7f865b75fa6eef5f2c432cd56213ed342e80870fa3cfd773d0c834c6c8474"
+      "bytes": 7872,
+      "sha256": "d49a589337ffcf34b033ecb5a0ffa0ce4d8c5e82e2f79e68e396101936c852a9"
     },
     {
       "file": "paper/sections/4_evaluation.tex",
-      "bytes": 5011,
-      "sha256": "b2229152e7641a4d5bc1499b3869280cab35034204d102b91592f375baa38517"
+      "bytes": 5091,
+      "sha256": "c7b135d87b4740797ea6ea3c22e3e43f302012ba3aa1010dec182fba768d74bf"
     },
     {
       "file": "paper/sections/5_results.tex",

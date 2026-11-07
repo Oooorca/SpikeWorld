@@ -38,9 +38,10 @@ prediction is evaluated before its outcome is used to update the method.
 Each run contains 348 transitions, of which 174 are shifted. The primary
 score uses the 126 shifted transitions remaining after excluding the first
 four transitions of every episode, which establish its route.
-The score is the relative reduction in prediction mean squared error
-(MSE). If $E_{\mathrm{fr}}$ and $E_M$ denote frozen and
-method-$M$ errors on the same evaluated transitions, prediction gain is
+The score is the relative reduction in prediction MSE. Let $M$ identify the
+evaluated method. Let $E_{\mathrm{fr}}$ and $E_M$ be the mean prediction errors
+of the frozen predictor and method $M$ on the same evaluated transitions.
+Their comparison gives prediction gain $G_M$:
 \begin{equation}
  G_M=100\left(1-\frac{E_M}{E_{\mathrm{fr}}}\right)\%.
  \label{eq:gain}

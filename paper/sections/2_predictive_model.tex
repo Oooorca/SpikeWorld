@@ -28,7 +28,8 @@ For sensory position $\tau$, its update is
 \end{equation}
 Here $I_\tau$ is the incoming current, $u_{\tau-1}$ is the previous post-reset
 membrane value, $v_\tau$ is the value before reset, and $s_\tau$ is a binary
-spike. The decay $\beta=0.85$ retains part of the preceding value, and the
+spike. The indicator $\mathbf{1}[\cdot]$ is one when its condition holds and
+zero otherwise. The decay $\beta=0.85$ retains part of the preceding value, and the
 threshold $V_{\mathrm{th}}=1$ determines whether a spike is emitted. The last
 operation subtracts the threshold after a spike. During offline training,
 surrogate derivatives supply a gradient through the threshold
@@ -61,19 +62,23 @@ Feature patterns, trajectories, and membrane traces are schematic illustrations.
 \subsection{Predicting the next sensory slice}
 In Figure~\ref{fig:targets}A, the modality-specific output head uses positions
 $1$ through $\tau$ to produce
-$\hat x^m_{\tau+1}$, a prediction of the next feature slice. Its loss is
+$\hat x^m_{\tau+1}$, a prediction of the next feature slice. The hat marks a
+prediction; $x^m_{\tau+1}$ without the hat is the observed target.
+The prediction loss for stream $m$ is
 \begin{equation}
  \ell_m=\frac{1}{(T-1)D_m\,p_m}
  \sum_{\tau=1}^{T-1}\|\hat x^m_{\tau+1}-x^m_{\tau+1}\|_2^2.
  \label{eq:next}
 \end{equation}
-The numerator sums prediction error over the available next-slice pairs.
+The squared norm $\|\cdot\|_2^2$ sums squared errors across feature channels.
+The outer sum then adds these errors over the available next-slice pairs.
 Dividing by $(T-1)D_m$ averages over positions and channels. The positive
 constant $p_m$ is the training-set error of the persistence baseline, which
 predicts the next slice by copying the current one. This normalization puts
 modalities with different numerical scales on comparable footing. The
-sensory loss $\mathcal L_{\mathrm{next}}$ averages audio, text, image, and video
-groups; the exact grouping is in Appendix~\ref{app:losses}.
+sensory loss $\mathcal L_{\mathrm{next}}$ gives equal weight to audio, text,
+image, and video groups. The audio group first averages its two sources,
+SHD and SSC; Appendix~\ref{app:losses} gives the combined expression.
 
 The core processes spikes, while the output adapters predict encoded feature
 slices in each stream's feature space. The targets can therefore contain
@@ -83,10 +88,12 @@ event-oriented sensory sequences.
 \subsection{Predicting action outcomes}
 Figure~\ref{fig:targets}B uses a different horizon: the consequence of executing
 a command. Use $n$ for a macro-decision and $t_n$ for its starting environment step.
-An observation $q_n=q(t_n)\in\R^{D_q}$ has $D_q=39$ coordinates. A command
+An observation $q_n=q(t_n)\in\R^{D_q}$ has $D_q=39$ coordinates and contains
+the simulator's numerical observation at the start of that decision. A command
 $a_n\in[-1,1]^4$ and task identifier $c$ are supplied to the action branch.
 Let $q_n^+=q(t_n+H)$ be the observed outcome after horizon $H=8$ environment
-steps. The training target is the standardized observation change
+steps. The superscript $+$ marks this later observation. We predict how the
+observation changes over the interval, using the standardized target
 \begin{equation}
  d_n=(q_n^+-q_n-\mu_\Delta)\oslash\sigma_\Delta,
  \qquad
@@ -97,6 +104,8 @@ steps. The training target is the standardized observation change
 Here $g_\theta$ is the action-conditioned predictor with trained parameters
 $\theta$. The vectors $\mu_\Delta,\sigma_\Delta\in\R^{D_q}$ are the mean and
 scale of training observation changes; $\oslash$ is coordinate-wise division.
+Thus $d_n$ is a vector of observed changes, distinct from the scalar hidden
+width $d$ introduced above.
 The factor $1/D_q$ averages error over output coordinates. In the implementation
 it is $1/39$, a dimensional normalization rather than a tuned coefficient.
 The state and action/task adapters provide two tokens to the shared core;
@@ -105,7 +114,8 @@ the frozen linear endpoint head maps the final action feature to $D_q$ outputs.
 \subsection{Learning predictions and semantic readouts together}
 The four losses in Figure~\ref{fig:targets}C train prediction, recognition,
 and association from the same core. The coupled semantic heads read its
-features to predict category logits.
+features to predict category logits, the class scores before conversion to
+probabilities.
 Their cross-entropy loss is $\mathcal L_{\mathrm{sem}}$. A binding head maps
 image and rendered-text features to normalized vectors, and a symmetric
 contrastive loss $\mathcal L_{\mathrm{bind}}$ associates examples with the same
@@ -117,8 +127,9 @@ digit identity. Joint training minimizes
  \qquad \lambda_b=0.25,\quad\lambda_a=4.
  \label{eq:joint}
 \end{equation}
-The two $\lambda$ coefficients are fixed training weights for association and
-action prediction. Equation~\eqref{eq:joint} trains the core to preserve
+The fixed coefficients $\lambda_b$ and $\lambda_a$ set the relative weights
+of association and action prediction in the training loss.
+Equation~\eqref{eq:joint} trains the core to preserve
 information useful for both future prediction and present classification.
 Appendix~\ref{app:losses} expands the classification and contrastive terms.
 
