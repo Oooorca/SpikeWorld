@@ -9,7 +9,9 @@ released records in Appendix~\ref{app:protocols}.
 The sensory sources include SHD/SSC audio \citep{cramer2022heidelberg}, retinal
 digit images and rendered words, and a causal video-feature cache. Action
 sequences use Meta-World reach, push, pick-place, and door-open tasks
-\citep{yu2019metaworld}. Five action initializations sharing one sensory
+\citep{yu2019metaworld}. We call a sensory-pretrained checkpoint a
+\emph{foundation}; an action seed specifies a fresh initialization of its
+action branch. Five action initializations sharing one sensory
 foundation compare sequential training, action-only updating, and joint
 training. Three additional controlled event-model studies examine temporal
 structure, prediction of future observation statistics, and image/audio factor
@@ -48,8 +50,9 @@ Their comparison gives prediction gain $G_M$:
 \end{equation}
 A positive gain means smaller error. Action tracking applies the known actuator
 map to each corrected command and measures its distance from the desired
-command. This replay metric is separate from reward on method-specific live
-trajectories, evaluated below. Source-return correction measures
+command. Replay gives every method the same observations for the prediction
+comparison. In the closed-loop test below, corrected commands change subsequent
+observations, and reward measures the resulting behavior. Source-return correction measures
 the size of unnecessary command adjustments upon calibrated reentry. Action
 seeds are averaged within each foundation. Confidence intervals (CIs) use
 20,000 bootstrap draws over the three foundation means, preserving paired

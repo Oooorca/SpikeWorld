@@ -15,9 +15,18 @@ representation remains fixed.
 
 World models learn representations through prediction
 \citep{ha2018worldmodels,hafner2019planet,hafner2020dreamer}.
-SpikeWorld follows this predictive view with a spiking temporal core.
-Its neurons accumulate information and emit thresholded signals; its causal
-attention combines information available up to the current point in a sequence.
+For a sequence predictor, the timing and order of observations can matter as
+much as their content. We choose a spiking temporal core to make recent input
+history part of the computation: membrane variables accumulate incoming signals,
+leak over time, and emit spikes when their accumulated value crosses a threshold.
+This gives the model a mechanism for representing temporal patterns, which
+surrogate-gradient training can learn to use \citep{yu2026beyondrate}.
+Causal attention combines these signals using only the observed prefix.
+Our controlled event-model probes support this temporal motivation: future
+prediction is more accurate with ordered sequences than when event features
+are shuffled or sorted onto a regular time grid
+(Section~\ref{sec:temporal_evidence}).
+
 Audio, visual features, rendered words, and state--action inputs enter through
 appropriate adapters. Each adapter preserves its stream's prediction target; all streams use the
 same temporal core. We use \emph{next-spike prediction} to describe this
@@ -44,9 +53,12 @@ Figure~\ref{fig:workflow} connects this learning process to deployment.
 The left panel gathers heterogeneous inputs into a shared predictive model.
 The center panel returns to the weakened-motor example: the selected model
 stays fixed while newly observed outcomes provide evidence about the change.
+The predictor trained offline thus supplies the error signal for online learning.
 The right panel shows where that experience is stored. Residual matrices
 correct hidden features for prediction, while a separate score vector compares
 registered actuator transformations and chooses a bounded command correction.
+An existing control policy proposes the command; this interface adjusts it
+to compensate for the identified actuator change.
 The colored paths show how each correction is used. We can disable either
 component to test its effect on prediction and commands.
 

@@ -188,8 +188,8 @@
     },
     {
       "file": "paper/SpikeWorld.pdf",
-      "bytes": 606644,
-      "sha256": "c70a16f3e5dc05e20e3e9f82be35e9d4c60ba158196ee5ac460a5287c21e1e11"
+      "bytes": 609174,
+      "sha256": "618f05602bf6c0e2d7bc31377f313f0c5a769ad4f8fea6a6b78437bfc86b741e"
     },
     {
       "file": "paper/fig1_spikeworld_causal_fast_state.pdf",
@@ -334,7 +334,7 @@
     {
       "file": "paper/main.tex",
       "bytes": 1666,
-      "sha256": "515876e0dedd8113046cdb08eb13be1d9bb80fab4c76222188015d6786e98ed0"
+      "sha256": "cb2ea921bb03078cd56742289f58e6c5122e18268aea033a9447347b1010e7e4"
     },
     {
       "file": "paper/natbib.sty",
@@ -358,13 +358,13 @@
     },
     {
       "file": "paper/sections/1_introduction.tex",
-      "bytes": 4396,
-      "sha256": "fc1df65f2995a30c5f892302fc4da7d0911aa693cc18d5c9abefac75fed7ffc6"
+      "bytes": 5164,
+      "sha256": "a1369a5240fa29aadb4d5713b413ac77ab13d38ead9e0c922282d5c3fcd2ed0f"
     },
     {
       "file": "paper/sections/2_predictive_model.tex",
-      "bytes": 8158,
-      "sha256": "43f154d5506550125ab0628f3cf5394121344295d51bc0bf430a46bfa463c88c"
+      "bytes": 8673,
+      "sha256": "7005946a7e1058a28a09e4cf39b25d77e5c8a78f54b5abd4e7b5201a86890060"
     },
     {
       "file": "paper/sections/3_online_adaptation.tex",
@@ -373,13 +373,13 @@
     },
     {
       "file": "paper/sections/4_evaluation.tex",
-      "bytes": 5091,
-      "sha256": "c7b135d87b4740797ea6ea3c22e3e43f302012ba3aa1010dec182fba768d74bf"
+      "bytes": 5332,
+      "sha256": "6f433a36f77df557e4de98240edd404275963e6f426718579f0c9c0724f9da09"
     },
     {
       "file": "paper/sections/5_results.tex",
-      "bytes": 5837,
-      "sha256": "809733e1115cdb258eeb9ce3af4a148d6932cc0b2432b9c4afb4f05b006b4467"
+      "bytes": 6537,
+      "sha256": "1d5c0ee5b0f2ab68d2940d7da7ff2c7de8d76a33526e4862e17a5862acf85787"
     },
     {
       "file": "paper/sections/6_related_work.tex",

@@ -89,9 +89,21 @@ joint training improves class retrieval, while action-only updating achieves
 the lower action error.
 \input{figures/table_joint}
 
-The controlled probes in Appendix~\ref{app:probes} examine what the predictive
-interface captures: ordered temporal structure, future observation statistics,
-and image/audio factor associations. The training-stage pilot in
+\paragraph{Temporal structure supports future prediction.}
+\label{sec:temporal_evidence}
+In a separate controlled event-model study, ordered sequences yield a mean
+negative log-likelihood (NLL; lower is better) of 4.91, compared with 6.93 for
+the rate-grid control and 11.04 for shuffled order, across three seeds.
+The rate-grid control sorts event features and assigns evenly spaced timestamps;
+the order control shuffles non-time event features across fixed timestamps.
+This comparison shows that temporal organization carries useful predictive
+information in the probe task, supporting the motivation for a core that
+processes input history. Appendix~\ref{app:probes} gives the probe protocol
+and full results. These probe encoders are trained separately from the
+deployment checkpoints.
+
+Two further probes test future observation statistics and image/audio factor
+associations. The training-stage pilot in
 Appendix~\ref{app:bridge} then connects different trained checkpoints to the
 same external-state interface. The probes test what the representation learns; the pilot tests how the
 external correction behaves on checkpoints from different training stages.

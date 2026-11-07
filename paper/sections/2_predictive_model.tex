@@ -35,6 +35,14 @@ operation subtracts the threshold after a spike. During offline training,
 surrogate derivatives supply a gradient through the threshold
 \citep{neftci2019surrogate,yu2026beyondrate}.
 
+Equation~\eqref{eq:lif} explains the temporal role of the spiking model.
+An input can affect later membrane values even if it does not immediately
+produce a spike. Decay gives more recent inputs greater weight, so rearranging
+the same inputs can change when the threshold is crossed. The next-slice
+objective trains the core to use this history to predict what follows.
+Membrane accumulation supplies local temporal context; causal attention
+combines information across the available sequence positions.
+
 The shared core has two Transformer blocks and four attention heads. Each
 query attends to at most four causal positions, including itself. Spikes enter
 the attention and feed-forward paths, while residual connections carry numerical
@@ -87,7 +95,7 @@ event-oriented sensory sequences.
 
 \subsection{Predicting action outcomes}
 Figure~\ref{fig:targets}B uses a different horizon: the consequence of executing
-a command. Use $n$ for a macro-decision and $t_n$ for its starting environment step.
+a command. Use $n$ for an action decision and $t_n$ for its starting environment step.
 An observation $q_n=q(t_n)\in\R^{D_q}$ has $D_q=39$ coordinates and contains
 the simulator's numerical observation at the start of that decision. A command
 $a_n\in[-1,1]^4$ and task identifier $c$ are supplied to the action branch.
