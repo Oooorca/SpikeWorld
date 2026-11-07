@@ -29,7 +29,7 @@
     "output_nlms",
     "output_rls"
   ],
-  "decision": "STOP_P1_DOMINATED",
+  "decision": "direct_output_calibration_comparison_complete",
   "seconds": 96.61973118782043,
   "scope": "development on one sensory foundation; factual prediction, not independent planning benefit"
 }

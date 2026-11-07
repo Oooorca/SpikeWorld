@@ -1,0 +1,97 @@
+\section{Results}
+\label{sec:results}
+\subsection{A compact prediction--storage trade-off}
+External state improves shifted prediction MSE by 19.28\% with 28,848 mutable
+bytes. Prediction-path tuning reaches 21.85\% with 1,932,488 bytes under the
+evaluated Adam configuration. The difference in gain is 2.57 percentage
+points; the difference in mutable storage is about 67-fold.
+Figure~\ref{fig:tradeoff} and Table~\ref{tab:main} place this result beside the
+other evaluated configurations. The external-state point is non-dominated
+among these five configurations: no other point has both less mutable storage
+and greater mean prediction gain.
+
+\begin{figure}[tbp]
+\centering\includegraphics[width=\linewidth]{fig3_tradeoff.pdf}
+\caption{\textbf{External state provides a compact deployment configuration.}
+Left: prediction gain against peak mutable numeric storage for the five main
+arms. Labels identify every point; the horizontal axis uses a symmetric-log
+scale to include frozen prediction at zero bytes. Right: median update latency
+for the adaptive arms. All arms use the same three-foundation, three-action-seed
+design. These are configuration-specific memory and latency measurements.}
+\label{fig:tradeoff}
+\end{figure}
+\input{figures/table_main}
+
+The external-state mean prediction gain has a foundation-bootstrap 95\% CI
+of 15.71\%--21.80\%. Its mean tracking gain is 3.80\%, and calibrated-source
+return produces zero command correction. Median update time is 11.9 ms,
+approximately half that of the adapter and prediction-path tuning arms.
+External state thus improves prediction with a small allocation and a short
+update time in this comparison. Appendix~\ref{app:extended} reports the
+values for each foundation.
+
+In the separate matched actuator-identification replay, external state obtains
+19.72\% prediction gain and the routed matrix RLS obtains 0.58\%. That
+comparison isolates actuator-space identification on the six-stage layout.
+In the separate development protocol in Appendix~\ref{app:additional}, direct
+output-space calibrators achieve larger prediction gains with less state.
+Where the correction is applied therefore matters to this comparison.
+
+\subsection{Prediction and action gains come from different components}
+Table~\ref{tab:roles} makes the role of the residual matrices explicit.
+Relative to scores alone, matrices add 9.22 percentage points of prediction
+gain under shear and 25.12 points under attenuation. Yet the full and
+score-only variants execute exactly the same commands in the paired
+intervention. Removing the inverse makes action improvement zero.
+The matrices improve predictions; the scores and inverse change commands.
+The interventions separate these two effects of online adaptation.
+\input{figures/table_roles}
+
+The bounded-memory implementation preserves this behavior. Across the
+36 traces in nine matched four-controller scenarios, the original and bounded
+versions agree in observable
+fields, and the first changed command occurs at decision five. This verifies
+that the small runtime footprint does not depend on retaining an expanding
+transition history. Throughout the main deployment runs, parameter hashes
+and fixed-input semantic-logit hashes remain unchanged.
+
+\subsection{The action correction improves closed-loop reward}
+In registered attenuation, external state raises mean cumulative reward from
+414.68 to 422.58. The paired reward improvement is 7.90, with a 95\% CI from
+2.48 to 14.06. Figure~\ref{fig:control} shows how the reward difference
+develops after the observation prefix; Table~\ref{tab:control} includes all
+closed-loop comparison arms. The reward gain is positive on each of the three
+tasks and across all five model seeds. These results show that the score-and-inverse path improves behavior in this
+attenuation study, alongside the matrices' separate effect on prediction.
+
+\begin{figure}[tbp]
+\centering\includegraphics[width=0.95\linewidth]{fig4_control.pdf}
+\caption{\textbf{Behavior changes after evidence is available.}
+Left: mean cumulative reward difference between external state and frozen
+control, plotted at completed decisions. The shaded prefix contains the first
+four decisions; decision five is the earliest corrected command. Right: paired
+reward gains by task. The separate attenuation study uses 75 trajectories per
+arm. Reward is used for evaluation, not for updating external state.}
+\label{fig:control}
+\end{figure}
+\input{figures/table_control}
+
+\subsection{Shared predictive training supports several readouts}
+Relative to the sequential checkpoint, joint training reduces action MSE by
+17.10\% and normalized sensory prediction error by 0.75\%. Semantic accuracy
+and image--text class retrieval rise by 1.80 and 1.81 percentage points,
+respectively. These paired means use five action initializations
+sharing a sensory foundation. Table~\ref{tab:joint} reports their intervals.
+These changes show that joint updates improve both predictive and semantic
+readouts relative to the sequential checkpoint. The complete three-stage comparison
+in Appendix~\ref{app:joint} also shows the trade-off with action-only updates:
+joint training improves class retrieval, while action-only updating achieves
+the lower action error.
+\input{figures/table_joint}
+
+The controlled probes in Appendix~\ref{app:probes} examine what the predictive
+interface captures: ordered temporal structure, future observation statistics,
+and image/audio factor associations. The training-stage pilot in
+Appendix~\ref{app:bridge} then connects different trained checkpoints to the
+same external-state interface. The probes test what the representation learns; the pilot tests how the
+external correction behaves on checkpoints from different training stages.

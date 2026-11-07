@@ -1,0 +1,15 @@
+\begin{table}[tbp]
+\centering\small
+\caption{One-foundation training-stage pilot. MSE is evaluated on 126 shifted transitions after the observation prefixes. All variants inherit sensory predictive pretraining.}
+\label{tab:bridge}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Training stage & Frozen MSE & Score MSE & Full MSE & Gain (\%) \\
+\midrule
+Sequential & 0.3927 & 0.3661 & 0.2878 & 26.72 \\
+Action-only & 0.4408 & 0.3797 & 0.2918 & 33.81 \\
+Joint & 0.4097 & 0.3992 & 0.3116 & 23.96 \\
+Joint, no-next & 0.4270 & 0.4129 & 0.3186 & 25.39 \\
+\bottomrule
+\end{tabular}
+\end{table}

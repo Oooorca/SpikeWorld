@@ -1,0 +1,137 @@
+\section{Online algorithm and state accounting}
+\label{app:algorithm}
+\subsection{Initialization, routing, and state lifetime}
+The two residual matrices and all candidate scores start at zero. The stored
+counter starts at zero. At the start of each episode, the current route is
+source, the route is unlocked, and the temporary signature and pending-loss
+lists are cleared. The matrices and cumulative scores persist across episodes
+within a run. A new run creates a new state.
+
+The four routing classes are source, shear, attenuation, and noise. The router
+is a frozen two-layer network with a 64-unit ReLU hidden layer, fit offline
+using calibration signatures. Online, it receives the mean signature of the
+first four transitions. A signature contains candidate losses relative to identity, signed and
+absolute identity prediction errors, signed and absolute commands, and current
+physical observations. It also contains signed and absolute observation changes
+and cross-products between the first two command coordinates and the first
+six observation-change coordinates. These concatenate to 247
+values per transition. The true mechanism label is used to fit the router
+offline but is absent from its online input.
+
+Once the fourth signature arrives, the router locks for that episode. For
+shear or attenuation, the four pending loss vectors are added to the persistent
+scores, and their count is committed. Subsequent outcomes add one new loss
+vector each. Source and noise routes keep the identity command transformation
+and do not update residual matrices. Both temporary lists are cleared when
+the route locks. The scores are shared across tasks and indexed by candidate;
+the two matrices are indexed by mechanism family.
+
+The selected candidate is the minimum cumulative score within the locked
+family. Dividing scores by the shared count would leave this ordering
+unchanged. Ties use the first minimum in the fixed bank order, matching the
+implementation's \texttt{argmin}. Scores are computed from the frozen
+predictor, before the residual-matrix correction.
+
+\subsection{Candidate transformations and command correction}
+The identity candidate is followed by 15 shear values
+$k\in\{0.05,0.10,\ldots,0.75\}$ and 16 attenuation values
+$g\in\{0.20,0.25,\ldots,0.95\}$. For command coordinates $(a_x,a_y)$,
+\begin{align}
+ T_{\rm shear}(a;k)_x&=a_x,&
+ T_{\rm shear}(a;k)_y&=a_y+ka_x,\\
+ T_{\rm attenuation}(a;g)_{x,y}&=g\,a_{x,y}.&&
+\end{align}
+Other coordinates are unchanged. Transformed candidates are clipped to
+$[-1,1]$ before querying the predictor. The inferred inverse uses
+$\tilde a_y=a_y^*-\hat k a_x^*$ for shear, or
+$\tilde a_{x,y}=a_{x,y}^*/\max(\hat g,0.20)$ for attenuation.
+The hat denotes the selected bank value. The floor $0.20$ prevents excessive
+division and coincides with the lowest attenuation candidate. The change
+from the desired command is then capped by Equation~\eqref{eq:command}.
+If the resulting command exceeds the action bounds, the entire proposal is
+replaced by the desired command for that example.
+
+\subsection{Exact matrix write}
+\label{app:matrix-update}
+The fixed basis $B$ contains the first 30 right singular vectors of centered
+offline action hidden features. After observing $d_n$ and committing the
+candidate-score update, the prediction used for the matrix write is recomputed
+with the selected candidate and the current matrix. Let $C$ denote this
+active matrix, and let
+\begin{equation}
+ L_n(C)=\frac1{D_q}\|W_{\rm out}(h_n+Cz_n)+b_{\rm out}-d_n\|_2^2,
+ \qquad A_n=\nabla_C L_n(C).
+\end{equation}
+Here $L_n$ is the current matrix-write loss, $A_n$ is its matrix gradient, and
+all other quantities are held fixed
+for this write. The normalized step and projection are
+\begin{equation}
+ C'=C-\eta\frac{A_n}{\max(\|A_n\|_F,\epsilon)},\qquad
+ C\leftarrow C'\min\!\left(1,\frac{R_C}{\max(\|C'\|_F,\epsilon)}\right),
+ \quad \epsilon=10^{-12}.
+ \label{eq:update}
+\end{equation}
+$C'$ is the tentative matrix before projection, and $\epsilon$ safeguards
+division by a zero norm. The Frobenius norm $\|\cdot\|_F$ is the square root of the sum of squared
+matrix entries. Normalization controls step length; projection bounds the
+matrix norm. A zero gradient yields a zero step. No optimizer moments are
+maintained. This recomputed training loss is distinct from the pre-update
+prediction error already recorded for evaluation.
+
+\paragraph{A useful interpretation.}
+Let $e_n=d_n-g_{\theta_0}(q_n,T_j(a_n),c)$ be the uncorrected error after
+candidate selection, and let $v_n=W_{\rm out}C_\rho z_n$ be the correction in
+output space. Expanding the square gives
+\begin{equation}
+ \frac{\|e_n\|_2^2-\|e_n-v_n\|_2^2}{D_q}
+ =\frac{2e_n^\top v_n-\|v_n\|_2^2}{D_q}.
+\end{equation}
+The first term rewards alignment with the residual; the second penalizes an
+oversized correction. Thus prediction improvement depends on its direction
+as well as its magnitude. This identity concerns prediction error, while
+the separate inverse determines command changes.
+
+\subsection{One decision cycle}
+\begin{enumerate}[leftmargin=*,itemsep=3pt]
+\item Read the current physical observation and desired policy command.
+      Use the previously available route and scores to form a capped command.
+\item Predict its outcome with the frozen core and the currently available
+      residual matrix. Save this prediction for evaluation.
+\item Execute the command and wait for the outcome. In live attenuation
+      control, the actuator-transformed command is held over the macro horizon.
+\item Score the saved prediction against the observed outcome before writing
+      either external component.
+\item Compute all candidate losses with the uncorrected frozen predictor.
+      Before route lock, append the bounded signature/loss prefix. At the
+      fourth outcome, infer the family and, for shear or attenuation, commit
+      the four pending loss vectors exactly once. Clear the temporary prefix.
+      On subsequent outcomes in these routes, add only the new loss vector.
+\item If the route is now locked to shear or attenuation, perform one matrix
+      write with Equation~\eqref{eq:update}. The fourth outcome is the first
+      eligible write; its candidate losses are not added a second time.
+\item Continue with the next decision. The first opportunity for a changed
+      command is decision five.
+\end{enumerate}
+The code provides separate \texttt{predict}, \texttt{inverse}, and
+\texttt{observe} operations to keep these read/write times explicit.
+
+\subsection{Complete mutable-state ledger}
+\begin{table}[tbp]\centering\small
+\caption{Peak mutable numeric allocation in FP32. Fixed model/router/basis
+parameters and transient activations are outside this adaptation-state metric.}
+\label{tab:ledger}
+\begin{tabular}{@{}llr@{}}\toprule
+Object & Arithmetic / lifetime & Bytes\\\midrule
+Two residual matrices & $2\times96\times30\times4$; stream & 23,040\\
+Candidate scores and count & $(32+1)\times4$; stream & 132\\
+Compatibility padding & $303\times4$; fixed allocation & 1,212\\
+Routing signatures and losses & $4\times(247+32)\times4$; prefix & 4,464\\\midrule
+Peak total & Tensor block plus prefix & 28,848\\\bottomrule
+\end{tabular}\end{table}
+The allocated tensor block is 24,384 bytes. The active entries use 23,172
+bytes; the remaining entries preserve the historical allocation layout.
+The prefix is bounded at four observations and released on route lock.
+Python-object overhead and transient inference/gradient buffers are not
+included in this numeric-state ledger. The same persistent-state accounting
+includes trainable prediction parameters, optimizer tensors, and replay for
+the comparison arms. Bytes are not a hardware energy measurement.

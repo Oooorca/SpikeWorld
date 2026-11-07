@@ -1497,7 +1497,7 @@
       "pick-place-v3"
     ]
   },
-  "contract": "/Users/didi/private/SNN/research/M431_FRESH_TASK_LEVEL_CONTROL_CONTRACT.md",
+  "contract": "[local]/M431_FRESH_TASK_LEVEL_CONTROL_CONTRACT.md",
   "decision": "M431_FRESH_TASK_LEVEL_CONTROL_QUALIFIED",
   "failed_gates": [],
   "gates": {

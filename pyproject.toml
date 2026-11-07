@@ -7,7 +7,7 @@ name = "spikeworld"
 version = "0.1.0"
 description = "Code for predictive multimodal world modeling and fast-state adaptation over spike streams"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
   "numpy>=1.26,<3",
   "torch>=2.2,<3",
@@ -38,4 +38,4 @@ testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 92
-target-version = "py310"
+target-version = "py311"

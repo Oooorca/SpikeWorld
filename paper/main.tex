@@ -1,0 +1,49 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{times,amsmath,amssymb,booktabs,array,longtable,graphicx,xcolor}
+\usepackage[round,authoryear]{natbib}
+\usepackage{microtype,url,enumitem}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\usepackage[font=small,labelfont=bf]{caption}
+\setlength{\emergencystretch}{2em}
+\setlength{\parskip}{3pt}
+\setlength{\textfloatsep}{16pt}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.85}
+\renewcommand{\arraystretch}{1.15}
+\graphicspath{{figures/}}
+\newcommand{\R}{\mathbb{R}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\title{\bfseries SpikeWorld: Adapting Frozen World Models\\with Compact State}
+\author{\normalsize Ziqiao Yu, Hongming Zhang, Kai Wang, Runze Wei, Runze Cui,\\
+\normalsize Yizhou Tan, Bowen Zhou, Siming Lu, Meijun Guo, Qingfeng Tang}
+\date{November 2026}
+\begin{document}
+\raggedbottom
+\maketitle
+\begin{abstract}
+\input{sections/0_abstract}
+\end{abstract}
+\input{sections/1_introduction}
+\input{sections/2_predictive_model}
+\input{sections/3_online_adaptation}
+\input{sections/4_evaluation}
+\input{sections/5_results}
+\input{sections/6_related_work}
+\input{sections/7_conclusion}
+\begingroup
+\small\setlength{\bibsep}{3pt}
+\bibliographystyle{iclr2027_conference}
+\bibliography{references}
+\endgroup
+\clearpage
+\appendix
+\input{sections/A_notation_training}
+\input{sections/B_online_details}
+\input{sections/C_extended_results}
+\input{sections/D_reproduction}
+\end{document}

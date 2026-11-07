@@ -1,0 +1,136 @@
+\section{Notation, architecture, and training}
+\label{app:training}
+This appendix defines the architecture, training objectives, and notation. The sensory sequence
+clock is indexed by $\tau$; the robot's macro-decision clock is indexed by $n$.
+One macro-decision starts at environment step $t_n$ and has nominal horizon
+$H=8$. In the closed-loop runner, the transformed command is held for that
+interval, unless the episode terminates or reaches its remaining-step limit.
+
+\subsection{Notation at a glance}
+\begin{longtable}{@{}p{.21\linewidth}p{.27\linewidth}p{.46\linewidth}@{}}
+\caption{Principal symbols. Scalars, dimensions, learned quantities, and fixed
+offline quantities are identified separately.}\label{tab:notation}\\
+\toprule Symbol & Shape or value & Meaning \\\midrule\endfirsthead
+\toprule Symbol & Shape or value & Meaning \\\midrule\endhead
+$m,\tau,T,D_m$ & Stream; position; $16$; stream-specific & Sensory stream, sequence index, length, and channel count.\\
+$x^m_\tau,\hat x^m_{\tau+1}$ & $\R^{D_m}$ & Observed current and predicted next feature slice.\\
+$p_m$ & Positive scalar & Persistence MSE used to normalize the sensory objective.\\
+$I_\tau,v_\tau,u_\tau$ & Per-neuron values & Input current, pre-reset membrane, and post-reset membrane.\\
+$s_\tau,\beta,V_{\rm th}$ & Binary; $0.85$; $1$ & Spike, decay, and firing threshold.\\
+$n,t_n,H$ & Decision; environment step; $8$ & Separate macro-decision and simulator clocks.\\
+$q_n,q_n^+,D_q$ & $\R^{39}$; $39$ & Current/outcome physical observations and their dimension.\\
+$a_n^*,\tilde a_n,a_n$ & $[-1,1]^4$ for valid commands & Desired, inverse-proposed, and executed commands.\\
+$c$ & Task identifier & One of the four manipulation task embeddings.\\
+$d_n,\hat d_n$ & $\R^{39}$ & Standardized observed and predicted observation change.\\
+$\mu_\Delta,\sigma_\Delta$ & $\R^{39}$, fixed & Offline mean and positive scale of observation changes.\\
+$\theta,\theta_0,g_\theta$ & Trained parameters / predictor & Offline parameters; frozen deployment copy; endpoint predictor.\\
+$h_n,\tilde h_n,d$ & $\R^{96}$; $96$ & Original/corrected action feature and hidden width.\\
+$\bar h,B,r,z_n$ & $\R^{96}$; $\R^{30\times96}$; $30$; $\R^{30}$ & Fixed mean, fixed basis, basis rank, and compressed feature.\\
+$\rho,C_\rho$ & Route; $\R^{96\times30}$ & Inferred mechanism and its online residual matrix.\\
+$W_{\rm out},b_{\rm out}$ & $\R^{39\times96}$; $\R^{39}$ & Frozen linear endpoint readout.\\
+$j,J,T_j,S_j$ & Index; $32$; map; scalar & Candidate, bank size, command transform, and cumulative loss.\\
+$k,g,\hat k,\hat g$ & Scalars & Shear/gain and their selected candidate estimates.\\
+$\eta,R_C,\delta$ & $0.02$, $0.20$, $0.05$ & Matrix step length, matrix norm bound, command correction cap.\\
+$\lambda_b,\lambda_a$ & $0.25$, $4$ & Fixed binding/action loss weights in joint training.\\
+$E_M,G_M$ & MSE; percentage & Error of method $M$ and gain relative to frozen prediction.\\
+$\ell_m,\mathcal L_{\rm next}$ & Scalar losses & Per-stream and grouped sensory prediction objectives.\\
+$\mathcal L_{\rm sem},\mathcal L_{\rm bind},\mathcal L_{\rm act}$ & Scalar losses & Semantic classification, image/text association, and action prediction objectives.\\
+$\ell_{n,j}$ & Scalar & Observed transition loss for candidate $j$.\\
+$L_n,A_n,C'$ & Scalar; $\R^{96\times30}$; same & Matrix-write loss, its gradient, and tentative matrix before projection.\\
+$\epsilon$ & $10^{-12}$ & Safeguard for norm division in the matrix update.\\
+$e_n,v_n$ & $\R^{39}$ & Uncorrected prediction residual and output-space correction.\\
+$N,y_i,p_{i,y_i}$ & Count; class; probability & Batch size, class label and its predicted probability.\\
+$u_i,v_j$ & $\R^{64}$, unit norm & Image and text binding vectors (distinct from membrane variables).\\
+$P_i,b_{ij},\tau_b$ & Index set; scalar; $0.12$ & Matching-class texts, image/text similarity and binding temperature.\\
+\bottomrule
+\end{longtable}
+
+\subsection{Data interfaces and the shared core}
+The audio streams use 224 channels for SHD and 285 for SSC. SHD input is
+zero-padded to the shared audio stem's width, while the corresponding output
+heads retain their original dimensions. Retinal image and rendered-word
+streams each use 40 channels and share an input stem. The video stream uses
+896 pooled feature channels. All sensory sequences have length 16. Retinal
+data come from the digit-image source in \texttt{sklearn.datasets.load\_digits};
+rendered words are represented by spatial features under a common scanpath.
+Video inputs are causal feature changes from a content-disjoint
+Something-Something-V2 cache. The study uses cached inputs with their recorded
+splits rather than collecting physical event-camera measurements.
+
+The model has width 96, two shared blocks, four attention heads, and a
+feed-forward width of 192. Input stems apply layer normalization and linear
+projection, followed by position and modality embeddings. Input spikes are
+added to the projected numerical features. Each shared block has spike-based
+attention and a spiking feed-forward path, both with residual connections.
+The output is layer-normalized. Sensory next-slice prediction adds the learned
+output-head change to the current slice, so copying the current feature is
+the natural zero-change reference.
+
+The attention implementation restricts each query to a local causal window
+of at most four positions, rather than selecting the four largest scores
+from all past positions. Queries, keys, and values are formed with LIF units;
+membrane-dependent gates modulate attention scores, which are normalized by
+softmax within the available window. This limits the number of attention pairs. We do not measure neuromorphic
+energy in these experiments. LIF state is initialized
+for each input sequence; deployment memory resides in the explicit external
+state rather than an unbounded cross-episode membrane history.
+
+The action branch embeds the 39-coordinate observation and four-coordinate
+command into two tokens. Task and token-type embeddings are added to them,
+and the same core processes the pair. Its final token provides the action
+feature $h_n$ for the linear readout. The complete checkpoint has 1,451,388
+parameters. The joint-training configuration exposes 605,079 trainable
+parameters; the main deployment interface freezes the selected checkpoint.
+
+\subsection{Full offline objectives}
+\label{app:losses}
+Let $\ell_{\rm SHD}$ and $\ell_{\rm SSC}$ be Equation~\eqref{eq:next} on the
+two audio sources, and let $\ell_{\rm image},\ell_{\rm text},\ell_{\rm video}$
+be the other sensory losses. The grouping used in training is
+\begin{equation}
+ \mathcal L_{\mathrm{next}}=\frac14\left[
+ \frac{\ell_{\rm SHD}+\ell_{\rm SSC}}2+
+ \ell_{\rm image}+\ell_{\rm text}+\ell_{\rm video}\right].
+\end{equation}
+Audio receives one group weight despite having two sources. The persistence
+denominator is floored at $10^{-8}$ in code to prevent division by zero.
+This equation defines the training loss, whose denominators come from the
+training split. Evaluation aggregation is specified separately in
+Appendix~\ref{app:joint}.
+
+For a batch of $N$ labeled examples, let $y_i$ be the class of example $i$
+and let $p_{i,y_i}$ be its predicted softmax probability. Semantic cross-entropy
+is $-N^{-1}\sum_{i=1}^N\log p_{i,y_i}$, averaged across the five sensory
+streams. The coupled heads flatten the length-16 hidden sequence, normalize
+it, apply dropout during training, and predict the relevant classes. The
+class counts are 20 for SHD, 35 for SSC, 10 for retinal digits/words, and 42
+for the video cache. An inherited stable semantic branch separately operates
+on standardized flattened sensory inputs. Both branches are frozen at
+deployment; the joint-learning semantic results concern the coupled branch.
+
+For binding, $N$ is the number of paired image/text examples in the batch.
+The subscripts $I$ and $T$ below denote image and text. Let $u_i$ and $v_j$ be
+unit-normalized 64-dimensional image and
+text representations, respectively. These are distinct from the membrane
+symbol $u_\tau$ in Equation~\eqref{eq:lif}. Define similarity
+$b_{ij}=u_i^\top v_j/\tau_b$, where the temperature is $\tau_b=0.12$.
+Let $P_i$ contain all text indices whose digit class matches image $i$.
+The image-to-text loss is
+\begin{equation}
+ \mathcal L_{I\rightarrow T}=-\frac1N\sum_{i=1}^N
+ \log\frac{\sum_{j\in P_i}\exp(b_{ij})}{\sum_{j=1}^N\exp(b_{ij})}.
+\end{equation}
+This assigns probability mass to all matching-class texts, rather than one
+arbitrarily chosen pair. The reverse loss $\mathcal L_{T\rightarrow I}$
+exchanges image and text roles, and
+$\mathcal L_{\mathrm{bind}}=(\mathcal L_{I\rightarrow T}+\mathcal L_{T\rightarrow I})/2$.
+The binding representation averages hidden features across sequence positions
+before its projection.
+
+The action objective is Equation~\eqref{eq:action}. Its mean and scale are
+fit from offline observation changes and reused during deployment. The
+weights in Equation~\eqref{eq:joint} are the fixed configuration used by the
+recorded study. Sequential action training runs for 800 updates. The additional
+joint stage uses 200 updates, batch size 32, and learning rate $10^{-4}$.
+Sensory prediction and action prediction both supply gradients to the shared
+core in this joint stage.

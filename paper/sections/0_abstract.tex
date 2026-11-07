@@ -1,0 +1,16 @@
+World models can learn from their own prediction errors after deployment, but
+updating a shared model also changes the representation used by its other tasks.
+We introduce SpikeWorld, a predictive--semantic spiking model that keeps its
+trained parameters fixed and learns deployment corrections in compact external
+state. We train a shared causal core to predict future sensory features and
+action outcomes, together with semantic recognition and cross-modal association.
+At deployment, we use observed prediction errors to update residual matrices
+that refine future predictions and candidate scores that select bounded action
+corrections. On a six-stage stream of registered actuator changes,
+28.8 KB of mutable numeric state reduces prediction error by 19.3\%, compared
+with 21.9\% for the evaluated prediction-path fine-tuning configuration using
+1.93 MB. We test the components separately to identify which improves prediction and
+which changes actions. A closed-loop study shows that the action correction
+improves reward. Throughout adaptation, the trained model and its semantic
+outputs on fixed inputs remain unchanged. These results show that a predictive model can use deployment experience to
+improve its predictions while preserving its learned semantic mapping.

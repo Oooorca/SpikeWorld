@@ -1,4 +1,10 @@
-# Paper tables rebuilt from raw outputs
+# Legacy reference tables rebuilt from archived outputs
+
+These tables describe the legacy reference snapshot, not the current manuscript's
+three-foundation deployment comparison. Its 24,384-byte tensor-block accounting
+excludes the bounded routing prefix. The current complete peak is 28,848 bytes;
+use `results/current/deployment_pareto.json` and `tools/verify_current.py` for the
+current Figure 3A,C / Table 2 results.
 
 | Joint training comparison | Change |
 |---|---:|

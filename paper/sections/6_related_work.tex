@@ -1,0 +1,36 @@
+\section{Related work}
+\paragraph{World models and predictive state.}
+World models learn representations that support forecasting and control
+\citep{ha2018worldmodels,hafner2019planet,hafner2020dreamer}.
+Predictive state representations likewise describe a system through predictions
+of future observations \citep{littman2002predictive}.
+SpikeWorld uses prediction in two phases: offline to train sensory and action
+features, and online to obtain outcome-based correction signals. It stores those corrections outside the trained core.
+
+\paragraph{Spiking temporal representations.}
+Surrogate gradients enable optimization through discrete spike thresholds
+\citep{neftci2019surrogate,zenke2018superspike}, and can support learning from
+spike timing \citep{yu2026beyondrate}. Spiking Transformers combine spike-based
+processing with attention \citep{zhou2023spikformer}. Event-based sensing
+provides temporal contrast streams \citep{gallego2022event}; our experiments
+also use encoded feature sequences from conventional data sources. We study how the shared core predicts these sequences and specify each
+stream's input encoding and target.
+
+\paragraph{Online adaptation and compact memory.}
+Test-time training uses self-supervised deployment signals to update a model
+\citep{sun2020ttt}. Fast weights and differentiable plasticity separate rapidly
+changing information from slower learned parameters
+\citep{ba2016fastweights,miconi2018plasticity}. SpikeWorld implements a related
+separation through a fixed-size residual interface and a separate candidate
+score state. The model's original semantic computation remains outside these
+online writes.
+
+\paragraph{Adaptive control.}
+Online system identification and multiple-model adaptive control estimate
+changes and adjust commands \citep{narendra1997multiple,yu2017uposi}.
+Learned motor adaptation can infer context across changing robot dynamics
+\citep{kumar2021rma}. SpikeWorld's candidate-score path belongs to this
+identification-and-correction setting. Its residual matrices add a distinct
+learned prediction correction, whose contribution is isolated experimentally.
+The appendix compares corrections applied in actuator space and at the
+prediction output.

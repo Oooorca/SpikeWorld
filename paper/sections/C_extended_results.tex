@@ -1,0 +1,154 @@
+\section{Protocols and extended experimental evidence}
+\label{app:extended}
+\subsection{Experimental units and statistics}
+\label{app:protocols}
+Table~\ref{tab:studies} separates the study units. A foundation is a sensory
+checkpoint; an action seed initializes or trains its action path. Multiple
+action seeds under one foundation are not treated as independent foundations.
+\begin{table}[tbp]\centering\small
+\caption{Experimental units and the question answered by each study.}
+\label{tab:studies}
+\begin{tabular}{@{}p{.24\linewidth}p{.31\linewidth}p{.39\linewidth}@{}}\toprule
+Study & Units & Question\\\midrule
+Main stream & 3 foundations, 3 action seeds each & Prediction, tracking, storage, return correction, latency\\
+Routed actuator RLS & Same $3\times3$ layout, separate replay & Actuator-space identification under the six-stage protocol\\
+Component roles & 5 model-seed clusters & Matrix contribution versus score-only and no-inverse variants\\
+Behavioral equivalence & 4 controllers, 3 tasks, 3 environment seeds & Bounded versus legacy history; first changed command\\
+Closed loop & 5 models, 3 tasks, 5 replicas per arm & Reward and success under attenuation\\
+Joint learning & 5 action seeds, one sensory foundation & Shared-core predictive and semantic learning\\
+Training-stage pilot & One foundation; matched cached stream & Same adaptation interface across offline stages\\
+Controlled probes & 3 seeds per separate model study & Temporal, future-statistic, and factor-association tests\\
+Output calibration & One foundation; 4 paired units per arm & Hidden versus output-space correction\\\bottomrule
+\end{tabular}\end{table}
+
+For the main stream, each action-seed run first averages the measured shifted
+transition errors, then computes its gain relative to the paired frozen arm.
+There are 126 measured shifted transitions per run, after omitting each
+episode's four-transition prefix from the score. All methods replay the same
+observations; tracking is evaluated through the known actuator map.
+Action seeds are averaged within each foundation, and the reported mean
+averages foundations. The archived 95\% intervals use 20,000 bootstrap draws
+of foundation means. Update latency uses 2,988 synchronized samples per
+adaptive arm after discarding 16 warm-up updates from each run.
+
+Source stages reuse router-calibration episodes and four-transition prefixes;
+the provenance record identifies 48 reused source-prefix rows per evaluated
+replica. Shifted stages use a separate execution archive. This defines the
+calibrated-source reentry measurement in the main table. The sequence can
+retain matrices and scores across stages while re-establishing the route at
+the start of each episode.
+
+Closed-loop statistics preserve method pairing while resampling model, task,
+and replica axes independently, with 20,000 draws. Success is the episode-level
+indicator of task completion; cumulative reward sums environment rewards.
+The reference code's older control runner has its own flat-episode bootstrap;
+the released recorded results contain the multi-axis intervals reported here.
+
+\subsection{Independent foundation results}
+\input{figures/table_foundations}
+The three foundation rows show how prediction gain varies across independently
+trained foundations. The frozen reference has zero gain by definition. The main result is a
+mean trade-off over these independently trained foundations; all rows and
+comparison arms are retained in the evidence files.
+
+The same-protocol routed actuator RLS uses 4,112 bytes, including its routing
+prefix. It obtains 0.58\% prediction gain and $-1.05$\% tracking gain; the
+replicated external-state arm obtains 19.72\% and 3.87\%, respectively.
+Both return zero correction on calibrated source revisits. This RLS estimates
+actuator coupling and is distinct from the output-space calibrators below.
+
+\subsection{Controlled temporal and cross-modal probes}
+\label{app:probes}
+These historical studies use separate event encoders, with predictive and
+contrastive objectives, and are not additional main-stream foundations.
+Identity metadata builds paired views; the future-prediction targets themselves
+are computed from observations.
+
+In the temporal probe, the full sequence is compared with two controls.
+Order shuffling permutes non-time event features across fixed timestamps.
+The rate-grid control sorts event features and assigns evenly spaced
+timestamps. The outcome is future-slice negative log-likelihood (NLL), where
+lower values indicate better prediction. These controls test sensitivity to
+the temporal structure of this task.
+
+The future-statistic probe predicts normalized histograms relating event
+time and feature coordinates in later image/audio views. A learned encoder
+is compared with a random encoder using the same prediction task. The
+composition probe receives factor segments and compares true image/audio
+factor associations with shuffled associations. Its score is top-1 factor
+association accuracy. Table~\ref{tab:probes} reports the archived three-seed
+means; the separate objectives have different metric scales.
+\input{figures/table_probes}
+
+\subsection{Three-stage joint-learning results}
+\label{app:joint}
+Table~\ref{tab:joint_stages} reports all three stages of the five-action-seed
+study. Its sensory metric averages four groups: audio (the mean of SHD and
+SSC), image, text, and video. The stored normalized values are used as
+recorded. The reference evaluator separately uses validation-set persistence
+denominators and an unweighted five-stream mean; that evaluator's aggregate
+should not be substituted for this archived four-group statistic.
+Relative to action-only updates, joint training increases action MSE by
+3.30\% on average across paired seeds (95\% CI: 1.65\%--4.94\%), while
+improving class retrieval by 3.31 percentage points (95\% CI: 0.94--5.38).
+Joint updates improve retrieval, while action-only updates favor action
+prediction.
+\input{figures/table_joint_stages}
+
+\subsection{Training-stage comparison}
+\label{app:bridge}
+The pilot begins with one common sensory-pretrained checkpoint. From the
+sequential action-trained model, three copies receive 200 additional updates:
+joint training, action loss alone, or joint training without the sensory
+next-slice term. Thus the no-next variant removes the term in the final stage,
+not from the full pretraining history. Offline fitting supplies each model's
+basis and router using the same procedure and hyperparameters.
+
+All models replay the same cached six-stage trajectory and compare frozen,
+score-only, and full external state on 126 shifted transitions after routing.
+Table~\ref{tab:bridge} shows that the interface can be used across these
+training stages. The ordering of adapted errors differs from the ordering of offline action
+errors. Lower offline action error alone does not determine which checkpoint
+has the lowest error after adaptation in this pilot.
+\input{figures/table_bridge}
+
+\subsection{Direct output-space calibration}
+\label{app:additional}
+The additional development comparison applies corrections at the output
+rather than the hidden feature. Table~\ref{tab:additional} preserves all
+methods: hidden residual state, direct-output NLMS, direct-output RLS, and a
+low-rank readout update. It uses one sensory foundation and four paired units
+per method, rather than the three-foundation main comparison.
+\input{figures/table_additional}
+
+In this setting, direct-output NLMS and RLS achieve larger prediction gains
+with less mutable state than the hidden-state correction. This comparison favors output-space correction in this development setting.
+We report it separately from the main-stream frontier because the protocols
+differ. The released records include every method arm with its protocol.
+
+\subsection{Closed-loop detail}
+\label{app:control}
+Each model/task controller is initialized once, then processes five fresh
+trajectory replicas in order. External state resets its route at each episode
+but keeps its matrices and candidate scores. Scalar RLS and gain-memory replay
+also retain their accumulated state across these replicas. All episodes use
+attenuation 0.4 and last 13 decisions, or 104 simulator steps.
+
+The live-control tuning arm uses AdamW at learning rate $10^{-5}$ on parameters
+whose names do not contain \texttt{semantic}. Gain-memory replay retrieves
+local gain estimates from observation/task features using nearest neighbors,
+with capacity 141. It does not train the prediction path with replay as the
+main-stream Adam arm does. The scalar RLS controller accumulates a numerator
+and denominator using finite-difference model sensitivity. The oracle divides
+by the true attenuation and clips to the valid command range; unlike the
+external-state controller, it has no 0.05 correction cap. Consequently, the
+main-stream storage and latency entries are not assigned to these live-control
+configurations.
+
+All six arms appear in Table~\ref{tab:control}, including the scalar RLS and
+oracle references. The external-state reward gains by task are 2.31 for
+pick-place, 11.61 for push, and 9.79 for reach. The five model-seed gains range
+from 7.19 to 8.66. Prediction-model tuning and external state both achieve
+66.67\% aggregate success. The scalar RLS obtains the largest reward among
+the non-oracle methods in this single-fault control protocol. External state improves reward over frozen control, while scalar RLS is the
+stronger controller for this particular fault.

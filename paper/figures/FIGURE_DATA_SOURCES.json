@@ -1,0 +1,34 @@
+[
+  {
+    "file": "deployment_pareto.json",
+    "sha256": "1ca8a317c25b61c4cf348abdc9c45f7dd55cdd4b0fbd587118f27a4c276189ba"
+  },
+  {
+    "file": "component_ablation.json",
+    "sha256": "308c882a3774b0cf375b5477c47a8e6547e8b95cdc3a7b33e23d6eff3b63da40"
+  },
+  {
+    "file": "closed_loop_control.json",
+    "sha256": "7275b90fb5d4619e93ca326ca01ff040b298a0d4799c434a92ff1a1cdadcb0ba"
+  },
+  {
+    "file": "joint_training.json",
+    "sha256": "4e175e83200752d6f0e889eae54b4a3c421afc02f611c495864b1225794159c1"
+  },
+  {
+    "file": "joint_training.json",
+    "sha256": "4e175e83200752d6f0e889eae54b4a3c421afc02f611c495864b1225794159c1"
+  },
+  {
+    "file": "formation_bridge.json",
+    "sha256": "3c05bb9660640964ae1e31ec28bd328a975de375b04f6e25978847f3dbcd3169"
+  },
+  {
+    "file": "additional_protocol/summary.json",
+    "sha256": "11b88c0ab62f93cf52e95be1cbfd8ed649122d13aa5e81df538c20f552f1a54e"
+  },
+  {
+    "file": "formation_probes.json",
+    "sha256": "42beb10d00d3b9e3b6fbad34296b121fa9c768e236ab08e66cf3ab91200af574"
+  }
+]

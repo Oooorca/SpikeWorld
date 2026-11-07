@@ -1,0 +1,16 @@
+\begin{table}[tbp]
+\centering\small
+\caption{Main six-stage replay comparison. Gains use 126 shifted transitions per run after routing prefixes; all trainable arms use Adam. Mutable state excludes frozen weights and transient activations.}
+\label{tab:main}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Method & Pred. gain (\%) & Tracking (\%) & Bytes & Update (ms) \\
+\midrule
+Frozen & 0.00 & 0.00 & 0 & -- \\
+External state & 19.28 & 3.80 & 28,848 & 11.90 \\
+Adapter (Adam) & 15.61 & 3.47 & 135,232 & 22.72 \\
+Prediction-path tuning (Adam) & 21.85 & 2.91 & 1,932,488 & 23.62 \\
+Replay (Adam) & 20.38 & 3.35 & 2,693,128 & 173.83 \\
+\bottomrule
+\end{tabular}
+\end{table}

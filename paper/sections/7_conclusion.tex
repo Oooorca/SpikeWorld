@@ -1,0 +1,20 @@
+\section{Discussion and conclusion}
+We asked where a world model should store what it learns after deployment.
+SpikeWorld uses the difference between predicted and observed outcomes to
+learn compact external corrections. The trained predictive--semantic model
+remains fixed, so its semantic outputs on the same inputs remain unchanged.
+This preservation follows from the computation itself and requires no
+balancing of online semantic and adaptation losses.
+
+Residual matrices refine predictions; candidate scores select a registered
+command correction. Removing each component in turn identifies its effect,
+and the closed-loop study shows that action correction improves reward.
+These results suggest that a deployment memory should be described by both
+the evidence it stores and the computation that reads it. Components trained
+from the same observed error can affect prediction and action differently.
+
+The measured configuration improves prediction with a small mutable state
+while preserving the original model. Its shared temporal core supports sensory
+and action prediction together with semantic readouts. We release the model
+and adaptation code, comparison protocols, and recorded results so that the
+predictive core and online correction can be studied independently.

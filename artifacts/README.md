@@ -11,10 +11,11 @@ budget is 28,848 B including routing history, rather than the legacy tensor-only
 - `shifts/`: 20 causal online streams, an online manifest, and a distinct
   post-hoc audit manifest. Mechanism and stage labels occur only in the audit
   manifest.
-- `spikeworld_seed42401.pt`: representative paper checkpoint, distributed as a
-  GitHub Release asset and installed by `spikeworld-fetch`.
+- `spikeworld_seed42401.pt`: representative legacy checkpoint, included in the prepared code ZIP
+  and distributed as a GitHub Release asset through `spikeworld-fetch`.
 - `../results/raw/`: immutable joint-training, registered-shift, closed-loop,
-  and deployment-audit outputs used to rebuild all reported summary numbers.
+  and deployment-audit outputs for the separate legacy result snapshot.
+  Current preprint records are in `../results/current/`.
 
 Checksums and the release URL are recorded in `manifest.json`.
 
@@ -51,3 +52,9 @@ episode_seeds, steps, stream_indices
 
 They contain no label, teacher output, reward, success flag, mechanism value,
 or stage label.
+
+The later three-foundation checkpoints and executors are also not bundled.
+Sensory arrays use `train_` and `val_` prefixes: audio/video have `x,y`, retinal
+has `image,text,y`, and video also has `teacher_semantic` for the legacy cache
+contract. Action arrays use `current_observations`, `candidate_actions`, and
+`endpoint_observations`. `src/spikeworld/data.py` defines the exact loading fields.

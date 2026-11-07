@@ -1,3 +1,6 @@
-# Evidence manifests hash exact bytes; do not rewrite JSON newlines on checkout.
-results/current/** -text
-paper/*.pdf -text
+# Release inventories hash exact bytes; preserve newlines on every platform.
+* -text
+*.pdf binary
+*.png binary
+*.npz binary
+*.zip binary

@@ -18,3 +18,4 @@ jobs:
       - run: uv run pytest -q
       - run: uv run spikeworld-verify
       - run: uv run python tools/verify_current.py
+      - run: uv run python tools/verify_preprint.py

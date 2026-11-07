@@ -1,0 +1,17 @@
+\begin{table}[tbp]
+\centering\small
+\caption{Closed-loop attenuation: 75 trajectories per arm; adaptation carries across replicas within each model/task pair. Reward and success are evaluation-only. Controller definitions appear in Appendix~\ref{app:control}.}
+\label{tab:control}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Method & Mean reward & Success (\%) \\
+\midrule
+Frozen & 414.68 & 53.33 \\
+Prediction-model tuning (AdamW) & 422.19 & 66.67 \\
+Oracle inverse (uncapped correction) & 485.50 & 80.00 \\
+Gain-memory replay & 428.59 & 60.00 \\
+Scalar RLS & 434.41 & 65.33 \\
+External state & 422.58 & 66.67 \\
+\bottomrule
+\end{tabular}
+\end{table}

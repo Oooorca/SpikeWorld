@@ -1,6 +1,6 @@
 {
   "aggregate": {
-    "decision": "CONTINUE_TO_DECISION_BRIDGE",
+    "decision": "routed_identification_comparison_complete",
     "formal": true,
     "foundation_rows": [
       {

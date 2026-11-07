@@ -1,0 +1,67 @@
+\section{Reproduction guide and release contents}
+\label{app:release}
+The code is organized around the model, adaptation interface, reference
+experiments, and recorded evidence. The repository is
+\url{https://github.com/Oooorca/SpikeWorld}. The release contains the paper source, figures, numerical tables, and
+verification tools. The entry points below cover recorded-result verification,
+reference model execution, and fresh experiments.
+
+\paragraph{Recorded-result verification.}
+\texttt{python tools/verify\_current.py} checks the exported evidence hashes
+and reconstructs the main-stream results from nine run records. It recomputes
+prediction gain, tracking gain, source-return correction, state sizes, and
+latency medians. Other archived files are integrity-checked by that tool.
+The additional verifier, \texttt{tools/verify\_preprint.py}, and the numerical
+figure generator trace table entries to named JSON fields and recompute
+closed-loop task differences.
+These operations use stored experimental outputs; they do not train models.
+
+\paragraph{Executable reference interfaces.}
+The package's tests exercise prediction shapes, causal attention, routing,
+memory bounds, action correction, and update timing. A representative
+historical checkpoint is identified by the artifact manifest and distributed
+as a hash-checked release asset. It is separate from the three independent
+foundations in the main-stream table. The entry points
+\texttt{spikeworld-joint}, \texttt{spikeworld-adapt},
+\texttt{spikeworld-control}, and \texttt{spikeworld-audit} expose the reference
+training, adaptation, control, and inspection workflows.
+
+\paragraph{Inputs for fresh experiments.}
+Fresh reference runs require sensory caches, action fitting and evaluation
+arrays, trained checkpoints, and fitted router/PCA bundles. The released
+artifact guide lists these fields and the available checkpoint/shift-stream
+assets. Several full-training caches, all current foundation checkpoints,
+and the later study executors are not bundled. Consequently, the released
+record verifier and reference interface tests are immediately executable,
+while a fresh reproduction of every current experiment additionally requires
+the listed upstream artifacts. Dataset access and its terms remain with the
+original sources.
+
+\begin{longtable}{@{}p{.32\linewidth}p{.62\linewidth}@{}}
+\caption{Code and result map. Paths are relative to the repository root.}\\
+\toprule Path & Contents\\\midrule\endfirsthead
+\toprule Path & Contents\\\midrule\endhead
+\path{src/spikeworld/model.py} & Input adapters, LIF units, shared core, semantic paths, endpoint head.\\
+\path{src/spikeworld/training.py} & Sensory, semantic, binding and action objectives; training routines.\\
+\path{src/spikeworld/adaptation.py} & Candidate transforms, frozen router, scores, matrix update and byte ledger.\\
+\path{results/current/} & Current manuscript records, including main stream, component study, closed loop and joint learning.\\
+\path{results/current/probe_records/} & Underlying controlled event-model probe outputs.\\
+\path{results/current/additional_protocol/} & Separate direct-output calibration comparison, all method arms preserved.\\
+\path{results/raw/} & Preserved legacy result snapshot, with its own verifier.\\
+\path{artifacts/} & Data/checkpoint requirements, online field contracts and download hashes.\\
+\path{paper/} & This preprint, editable figures and LaTeX sources.\\
+\bottomrule\end{longtable}
+
+The supported Python version for the package is 3.11. The lockfile records
+dependencies for optional training, control, and development extras. Simulation
+requires Meta-World and MuJoCo; the recorded-result verifier does not. Hardware
+latencies in the paper are the archived synchronized GPU measurements, rather
+than timings of the present CPU packaging checks.
+
+\section*{AI assistance}
+Generative AI tools assisted with literature lookup, research discussion,
+manuscript drafting and language editing, figure preparation, and preparation
+of the accompanying verification and release code. The authors retain
+responsibility for the scientific claims, experimental records, and released
+artifacts. The experimental quantities reported here come from the identified
+result records; this editorial revision does not introduce new training runs.

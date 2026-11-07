@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 import json
+import tomllib
 from pathlib import Path
 from typing import Any
 
 import numpy as np
-import tomllib
 import torch
 
 from ..model import ModelConfig, SpikeWorld

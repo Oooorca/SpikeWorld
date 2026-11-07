@@ -1,0 +1,18 @@
+\begin{table}[tbp]
+\centering\small
+\caption{Controlled event-model probes, three-seed means. Lower NLL/loss and higher accuracy are better. Temporal, future-statistic and factor-association studies correspond to archived M60, M69 and M71 records.}
+\label{tab:probes}
+\begin{tabular}{@{}lllr@{}}
+\toprule
+Study & Condition & Metric & Mean \\
+\midrule
+Temporal & Ordered sequence & NLL & 4.9118 \\
+Temporal & Rate-grid control & NLL & 6.9293 \\
+Temporal & Shuffled order & NLL & 11.0357 \\
+Future statistics & Learned encoder & Loss & 0.1103 \\
+Future statistics & Random encoder & Loss & 0.1397 \\
+Factor association & True pairing & Accuracy (\%) & 46.6667 \\
+Factor association & Shuffled pairing & Accuracy (\%) & 6.6667 \\
+\bottomrule
+\end{tabular}
+\end{table}

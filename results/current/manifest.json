@@ -1,7 +1,7 @@
 {
   "title": "SpikeWorld: Adapting Frozen World Models with Compact State",
-  "manuscript_sha256": "ed8259dae53522fb4ef74ccad53875756ab5d2f174eb6939fb15ddbfd5d00716",
-  "transformation": "JSON reserialization and local-machine path anonymization only; numbers, gates, and comparison arms retained.",
+  "manuscript_sha256": "c76ae4f5d8918676ff6ab62f3b91743f38595aed552a121b7e4a57e3fffeca2c",
+  "transformation": "Local-machine paths anonymized; internal workflow decision strings replaced with neutral experimental-status labels. Scientific numeric fields, booleans, nulls, gates and comparison arms retained. original_sha256 refers to immutable workspace evidence.",
   "files": [
     {
       "file": "deployment_pareto.json",
@@ -12,8 +12,8 @@
     },
     {
       "file": "routed_matrix_rls.json",
-      "bytes": 3802115,
-      "sha256": "52a74403b73d050856e0c4aaf2600c32c432f13f62816c7cf8ebb9dc59e704b6",
+      "bytes": 3943720,
+      "sha256": "8bf35b0391871af5425ba28a61554940a05122b3b3f2c86e3c77919f326faf6b",
       "original_sha256": "6b02e6c12caa1f3d6c36a2b33777a6d2a05a606f2776540b935b541a3b5e8551",
       "numeric_fields_unchanged": true
     },
@@ -47,8 +47,8 @@
     },
     {
       "file": "formation_bridge.json",
-      "bytes": 2663,
-      "sha256": "cc1c9b8ddd891a5d698ee57d8b98ff8ac04f2ca5aadd52d7257518e1dca59fb6",
+      "bytes": 2765,
+      "sha256": "3c05bb9660640964ae1e31ec28bd328a975de375b04f6e25978847f3dbcd3169",
       "original_sha256": "6637a562814fcae3cce153e6798acb2d01d52d67e5c7b7cc6becf6a4796b7c65",
       "numeric_fields_unchanged": true
     },
@@ -159,8 +159,8 @@
     },
     {
       "file": "additional_protocol/summary.json",
-      "bytes": 833,
-      "sha256": "1870a5dbdf9fa8aecb22086826b0927e1c4a609a0020c0105a21911dd37b7056",
+      "bytes": 896,
+      "sha256": "11b88c0ab62f93cf52e95be1cbfd8ed649122d13aa5e81df538c20f552f1a54e",
       "original_sha256": "3238f74986a7269c3d726762a2deeb0f25ef6ce54b8ee3a59e37b59620f2494e",
       "numeric_fields_unchanged": true
     },

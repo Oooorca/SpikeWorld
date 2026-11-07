@@ -1,0 +1,79 @@
+\section{Evaluation design}
+\label{sec:evaluation}
+We test whether the shared core learns predictive and semantic features,
+how much mutable state online adaptation requires, and which component changes
+behavior. The studies use different experimental units, listed with their
+released records in Appendix~\ref{app:protocols}.
+
+\paragraph{Representation and joint learning.}
+The sensory sources include SHD/SSC audio \citep{cramer2022heidelberg}, retinal
+digit images and rendered words, and a causal video-feature cache. Action
+sequences use Meta-World reach, push, pick-place, and door-open tasks
+\citep{yu2019metaworld}. Five action initializations sharing one sensory
+foundation compare sequential training, action-only updating, and joint
+training. Three additional controlled event-model studies examine temporal
+structure, prediction of future observation statistics, and image/audio factor
+association. They use separate probe models and three seeds each. These probe models are separate from the checkpoints used in the deployment
+comparison.
+
+\paragraph{The main deployment stream.}
+Three independently trained foundations, each with three action seeds, produce
+nine paired runs. Each uses the sequential checkpoint. All methods see the
+same six-stage layout: source, attenuation, source, shear, attenuation, and
+source return. Every stage includes the four manipulation tasks. The tested
+shift values belong to the registered bank. Shifted trajectories come from an
+execution archive separate from router calibration. Source stages revisit
+calibration episodes, so source-return measurements quantify calibrated reentry.
+
+The five configurations are frozen prediction, external state, action-adapter
+tuning, prediction-path tuning, and prediction-path tuning with replay. All
+three trainable comparison arms use Adam. ``Prediction-path tuning'' refers to
+the deployed prediction path, not every parameter in the multimodal model.
+We count mutable parameters, persistent optimizer tensors, state and routing
+buffers, and replay where applicable. We also record update latency using
+CUDA-synchronized measurements after warm-up.
+
+The main study replays a common recorded trajectory in causal order: each
+prediction is evaluated before its outcome is used to update the method.
+Each run contains 348 transitions, of which 174 are shifted. The primary
+score uses the 126 shifted transitions remaining after excluding the first
+four transitions of every episode, which establish its route.
+The score is the relative reduction in prediction mean squared error
+(MSE). If $E_{\mathrm{fr}}$ and $E_M$ denote frozen and
+method-$M$ errors on the same evaluated transitions, prediction gain is
+\begin{equation}
+ G_M=100\left(1-\frac{E_M}{E_{\mathrm{fr}}}\right)\%.
+ \label{eq:gain}
+\end{equation}
+A positive gain means smaller error. Action tracking applies the known actuator
+map to each corrected command and measures its distance from the desired
+command. This replay metric is separate from reward on method-specific live
+trajectories, evaluated below. Source-return correction measures
+the size of unnecessary command adjustments upon calibrated reentry. Action
+seeds are averaged within each foundation. Confidence intervals (CIs) use
+20,000 bootstrap draws over the three foundation means, preserving paired
+method comparisons.
+
+\paragraph{Component and closed-loop tests.}
+The component study compares full state, score-only state, and removal of the
+inverse. A separate 36-trace check verifies that bounding the routing history
+preserves the original implementation's observable behavior. Closed-loop
+attenuation uses five model seeds, three tasks, and five environment replicas:
+75 trajectories per method. The tasks are reach, push, and pick-place, with
+attenuation gain 0.4. Each trajectory contains 13 decisions over 104 environment
+steps. Adaptation state carries across the five replicas within each model/task
+pair; a new controller is created for the next pair. Reward and success are
+evaluation outputs, never adaptation inputs. Its CIs use paired resampling
+of model, task, and replica axes. The live-control tuning and replay controllers
+are defined separately in Appendix~\ref{app:control}.
+
+\paragraph{Classical calibration and training-stage diagnostics.}
+A matched six-stage replay compares the external state with routed actuator-space
+recursive least squares (RLS), using a two-by-two estimate for action coupling.
+The closed-loop study includes a separate scalar RLS reference for attenuation.
+Appendix~\ref{app:additional} also reports a one-foundation development study
+of direct output-space calibration, including normalized least mean squares
+(NLMS), RLS, and a low-rank readout update. We report each comparison under its own protocol because the calibrators
+correct different quantities.
+A further one-foundation pilot applies the same external-state interface to
+different offline training stages.

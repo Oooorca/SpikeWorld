@@ -80,6 +80,6 @@
     "joint_final_error_2pct_better_action_only": false,
     "joint_final_error_2pct_better_no_next": true
   },
-  "decision": "STOP_STRONG_BRIDGE",
+  "decision": "formation_deployment_pilot_complete",
   "seconds": 337.4437642097473
 }

@@ -1,0 +1,113 @@
+\section{Learning corrections outside the frozen model}
+\label{sec:adapt}
+Consider again the weakened motor. We compare the model's predicted outcome
+with the outcome observed in the environment, then use the difference to
+update two small objects. A score vector identifies a suitable command
+correction; a residual matrix improves the predicted outcome. The following description uses
+the decision index $n$ and target $d_n$ defined in Equation~\eqref{eq:action}.
+
+\subsection{Predict first, update after observation}
+At deployment, the selected predictor parameters $\theta_0$, semantic heads,
+mechanism router, and underlying control policy are frozen. The online interface
+receives the current observation, executed command, task identifier, and eventual
+outcome. Reward, success, and the true actuator change are evaluation variables,
+not online update inputs.
+
+Every prediction is recorded before its target is observed. After the horizon
+has elapsed, the system computes an error and updates external state for later
+decisions. The first four transitions in an episode supply evidence to the
+frozen mechanism router. The route locks after the fourth outcome arrives. The system can then update
+the persistent state for the first time. Consequently, decision five is
+the earliest command that can change. Appendix~\ref{app:algorithm} gives the
+complete schedule, including the different lifetimes of episode prefixes and
+persistent matrices.
+
+\subsection{Scores select an actuator correction}
+The model compares a bank of $J=32$ transformations: identity, shear, and
+attenuation candidates. Identity leaves the command unchanged. Shear couples
+the first two action coordinates, so that an $x$ command also affects $y$.
+Attenuation reduces the realized movement in the $x/y$ coordinates. The bank's
+values are registered offline; the online system infers a candidate from
+observed transitions.
+
+For candidate $j$, let $T_j$ be its command transformation. Once outcome $d_n$
+is available, the candidate receives loss
+\begin{equation}
+ \ell_{n,j}=\frac{1}{D_q}
+ \|g_{\theta_0}(q_n,T_j(a_n),c)-d_n\|_2^2,
+ \qquad S_j\leftarrow S_j+\ell_{n,j}.
+ \label{eq:scores}
+\end{equation}
+Here $S_j$ is its cumulative score. A lower loss means that the candidate transformation better explains the
+observed transition through the frozen predictor.
+A frozen router first selects the mechanism family $\rho$ from the four
+initial transitions; within that family, the candidate with the smallest
+$S_j$ supplies the estimated transformation. These comparisons always query
+the original frozen predictor, without the residual matrix described below.
+
+Let $a_n^*$ be the command proposed by the underlying policy, and let
+$\tilde a_n$ be the selected inverse transformation applied to that command.
+The controller executes
+\begin{equation}
+ a_n=a_n^*+\operatorname{clip}(\tilde a_n-a_n^*,-\delta,\delta),
+ \qquad \delta=0.05.
+ \label{eq:command}
+\end{equation}
+The clip acts separately on each coordinate and caps the size of the correction.
+If this capped command would lie outside the allowed action range, the system
+uses $a_n^*$ instead. The inverse maps, gain floor, and source/noise behavior
+are given in Appendix~\ref{app:algorithm}.
+
+For a one-coordinate illustration, suppose the route has locked and prior
+observations have selected gain 0.5. A desired command of 0.10 gives inverse
+proposal 0.20. The 0.05 cap makes the executed command 0.15. If the actual gain
+is 0.5, its realized effect is 0.075, compared with 0.05 without correction.
+Candidate scoring uses the forward gain transform to explain observed outcomes;
+the inverse compensates a later command. The residual matrix below changes the
+predicted outcome, not this command. These illustrative values explain the
+operation rather than report an additional experiment.
+
+\subsection{Matrices refine the prediction}
+After selecting a candidate, the frozen core computes hidden feature
+$h_n\in\R^d$ using its transformed command. We retain the fixed offline mean
+$\bar h\in\R^d$ and projection $B\in\R^{r\times d}$, where $r=30$.
+The projection is obtained by principal component analysis of offline action
+features. Each correctable mechanism family has its own matrix
+$C_\rho\in\R^{d\times r}$, initialized to zero. Prediction becomes
+\begin{equation}
+ z_n=B(h_n-\bar h),\qquad
+ \tilde h_n=h_n+C_\rho z_n,\qquad
+ \hat d_n=W_{\mathrm{out}}\tilde h_n+b_{\mathrm{out}}.
+ \label{eq:correction}
+\end{equation}
+The vector $z_n\in\R^r$ compresses the centered feature. Multiplication by
+$C_\rho$ expands it into a learned correction to the hidden representation.
+The original readout has weight $W_{\mathrm{out}}\in\R^{D_q\times d}$ and
+bias $b_{\mathrm{out}}\in\R^{D_q}$; both remain frozen.
+The prediction changes through the residual matrix; the feature extractor
+and readout keep their trained weights.
+
+After observing an outcome and updating the candidate scores, the active
+matrix takes a normalized gradient step on prediction MSE. The step length is
+$\eta=0.02$, and the matrix is projected to a Frobenius-norm ball of radius
+$R_C=0.20$. Appendix~\ref{app:matrix-update} spells out this update and explains
+how it differs from the earlier pre-update error used for evaluation. Candidate scoring and the action inverse do not read the matrices. We can
+therefore remove the matrices to measure their prediction effect while
+leaving action selection unchanged.
+
+\subsection{What remains fixed, and what occupies memory?}
+The trained semantic computation has no read connection to the external
+matrices or scores. Given the same sensory input and inference settings,
+it therefore returns the same logits (pre-softmax class scores) before and
+after online adaptation.
+We verify this with parameter and fixed-input-output hashes. This property
+preserves the learned mapping; semantic outputs can still differ when the
+robot observes different inputs.
+
+The online allocation contains two residual matrices, the score vector and
+count, compatibility padding, and a four-transition routing prefix. Their peak
+total is 28,848 bytes of mutable numeric state. This is the memory that can
+change during adaptation, separate from the frozen model and transient
+inference activations. Table~\ref{tab:ledger} gives the exact arithmetic.
+The bounded prefix is cleared after routing, and the matrices and scores retain
+experience across the stream.
